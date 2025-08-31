@@ -23,11 +23,11 @@ return [
     'Register Now'=>'سجل الآن',
     'Send'=>'ارسال',
     'Mobile number verification'=>'التحقق من رقم الجوال',
-    'Join as designer'=>'انضم كمصمم',
+    'Join As A Designer'=>'انضم كمصمم',
     'My Orders'=>'طلباتي',
     'dashboard'=>'لوحة التحكم',
 
-    'We at Opolia Online take pride in offering the best and highest-quality types of kitchens.'=>'نفتخر في اوبوليا اونلاين بتقديمنا لأفضل وأجود أنواع المطابخ',
+    'We at Oppolia Online take pride in offering the best and highest-quality types of kitchens.'=>'نفتخر في اوبوليا اونلاين بتقديمنا لأفضل وأجود أنواع المطابخ',
     'Order now.'=>'اطلب الان',
     'New Classic Kitchens'=>'مطابخ نيو كلاسيك',
     'Modern Kitchens'=>'    مطابخ حديثة',

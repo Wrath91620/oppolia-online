@@ -60,15 +60,16 @@ return [
     ],
 
     'details_title' => 'Order Details',
-    'back' => 'Back ➡',
+    'back' => 'Back',
 
     'status_details' => 'Status Details',
     'more' => 'More',
     'order_info' => 'Order Information',
 
     'kitchen_area' => 'Kitchen Area',
-    'kitchen_shape' => 'Kitchen Shape',
-    'kitchen_style' => 'Kitchen Style',
+    'kitchen_shape' => 'Select Kitchen Shape',
+    'kitchen_style' => 'Select Kitchen Style',
+    'personal_information' => 'Personal Information',
 
     'design' => 'Design',
     'price' => 'Price',
@@ -153,8 +154,8 @@ return [
 
     'username' => 'User Name',
     'email' => 'email',
-    'next_button' => 'Next ➡',
-    'back_button' => ' ⬅ Back',
+    'next_button' => 'Next',
+    'back_button' => 'Back',
     'kitchen_area_and_shape' => 'Kitchen Area and Shape',
     'select_expected_cost' => 'Select Expected Cost',
     'cost_below_20' => 'Less than 20,000',
@@ -172,6 +173,12 @@ return [
     'search_location' => 'Search for Location:',
     'search_here_placeholder' => 'Search here...',
     'submit_request' => 'Submit Request',
+    
+    // Order creation steps
+    'step_kitchen_area_shape' => 'Kitchen Area and Shape',
+    'step_kitchen_type_cost' => 'Kitchen Type and Cost',
+    'step_time_style' => 'Time Range and Kitchen Style',
+    'step_meeting_location' => 'Meeting Time and Location',
 
 
 

@@ -22,6 +22,7 @@
     <link href="{{ asset('Frontend/assets/css/kapp.css') }}?v={{ time() }}" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
     <link href="{{asset('Frontend/assets/css/icons.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/tajawal" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -308,7 +308,7 @@
 
 .designers-text {
     font-weight: 500;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 50px;
     text-align: center;
     color: rgba(0, 0, 0, 1);
@@ -526,12 +526,17 @@
     background-image: url("../images/gallery/ARlogo-bg.webp");
     background-color: #D3E0DD;
     padding: 15px;
-    background-position:top 10px left 10px;
+    background-position: top 10px right 10px;
     background-repeat: no-repeat;
 
     position: relative;
     height: auto;
     z-index: 1;
+}
+
+/* Arabic language - background positioned top-left */
+[dir="rtl"] .section-header {
+    background-position: top 10px left 10px;
 }
 
 .steps-section {
@@ -1563,7 +1568,7 @@ a.hover-underline.active::before {
     color: #0A4740;
     font-size: 16px;
     font-weight: 600;
-    white-space: nowrap;
+    white-space: normal;
     padding: 5px;
 }
 
@@ -1573,6 +1578,16 @@ a.hover-underline.active::before {
     font-weight: 500;
     line-height: 28px;
     padding: 30px;
+    padding-left: 0px;
+}
+
+/* Text alignment based on locale */
+[dir="rtl"] .why-us-text {
+    text-align: right;
+}
+
+[dir="ltr"] .why-us-text {
+    text-align: left;
 }
 
 .designer-info {
@@ -1598,10 +1613,153 @@ a.hover-underline.active::before {
 .number-span {
     background-color: #509F96 !important;
     border-radius: 0 !important;
+    display: inline-block !important;
+    vertical-align: top !important;
+}
+
+.text-title {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 15px !important;
+}
+
+.text-title .number-span {
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+}
+
+.text-content {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* Icon Box Component for Why Us Section */
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.icon-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.icon-box .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(80, 159, 150, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+}
+
+.icon-box .icon-wrapper svg {
+    width: 40px;
+    height: 40px;
+}
+
+.icon-box .icon-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0A4740;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.icon-box .icon-description {
+    color: #6c757d;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Why Us Grid Layout */
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Responsive adjustments for Why Us section */
+@media (max-width: 768px) {
+    .why-us-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .icon-box {
+        padding: 1.5rem 1rem;
+    }
+    
+    .icon-box .icon-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Showcase Section Styling */
+.showcase-image-container {
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.showcase-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
+/* Ensure equal height for showcase items */
+.row.align-items-stretch > .col-12,
+.row.align-items-stretch > .col-sm-6,
+.row.align-items-stretch > .col-md-3 {
+    display: flex;
+    flex-direction: column;
+}
 
+.row.align-items-stretch > .col-12 > a,
+.row.align-items-stretch > .col-sm-6 > a,
+.row.align-items-stretch > .col-md-3 > a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
 
+/* Responsive adjustments for showcase */
+@media (max-width: 576px) {
+    .showcase-image-container {
+        min-height: 200px;
+    }
+}
 
+@media (min-width: 577px) and (max-width: 767px) {
+    .showcase-image-container {
+        min-height: 220px;
+    }
+}
 
+@media (min-width: 768px) {
+    .showcase-image-container {
+        min-height: 280px;
+    }
+}

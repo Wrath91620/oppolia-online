@@ -1,6 +1,5 @@
-/.phpunit.cache
+# Laravel Framework
 /node_modules
-/public/build
 /public/hot
 /public/storage
 /storage/*.key
@@ -8,13 +7,157 @@
 .env
 .env.backup
 .env.production
-.phpactor.json
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
-/.fleet
-/.idea
-/.vscode
+
+# Laravel Storage & Logs
+/storage/app/public/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/debugbar/*
+/bootstrap/cache/*
+
+# Keep storage structure but ignore content
+!/storage/app/public/.gitkeep
+!/storage/framework/cache/.gitkeep
+!/storage/framework/sessions/.gitkeep
+!/storage/framework/views/.gitkeep
+!/storage/logs/.gitkeep
+
+# IDE & Editor Files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Build & Compiled Files
+/public/build
+/public/mix-manifest.json
+/public/css/app.css
+/public/js/app.js
+/public/js/bootstrap.js
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Configuration Files with Sensitive Data
+config/database.php
+config/mail.php
+config/services.php
+config/session.php
+config/cache.php
+config/queue.php
+
+# Application Keys & Secrets
+.env.local
+.env.development
+.env.testing
+.env.staging
+.env.production
+.env.example
+
+# Composer
+composer.phar
+composer.lock
+
+# NPM
+package-lock.json
+yarn.lock
+
+# Testing
+/coverage
+.phpunit.cache
+phpunit.xml.bak
+
+# Deployment
+/deploy
+/deployment
+*.tar.gz
+*.zip
+
+# Custom Application Files
+/public/uploads/*
+/public/images/uploads/*
+/public/documents/*
+/public/files/*
+
+# Keep upload directories structure
+!/public/uploads/.gitkeep
+!/public/images/uploads/.gitkeep
+!/public/documents/.gitkeep
+!/public/files/.gitkeep
+
+# Cache & Temporary Application Files
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*.log
+
+# Laravel Telescope (if used)
+/telescope
+
+# Laravel Horizon (if used)
+/horizon
+
+# Laravel Nova (if used)
+/nova
+
+# Laravel Spark (if used)
+/spark
+
+# Local Development
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# SSL Certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# Backup & Archive Files
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Application Specific
+/public/Frontend/assets/images/uploads/*
+/public/Dashboard/assets/images/uploads/*
+/public/storage/app/public/uploads/*
+
+# Keep upload directories
+!/public/Frontend/assets/images/uploads/.gitkeep
+!/public/Dashboard/assets/images/uploads/.gitkeep
+!/public/storage/app/public/uploads/.gitkeep

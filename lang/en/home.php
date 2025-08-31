@@ -23,7 +23,7 @@ return [
     'Register Now'=>'Register Now',
     'Send'=>'Send',
     'Mobile number verification'=>'Mobile Number verification',
-    'Join as designer'=>'Join AS Designer',
+    'Join As A Designer'=>'Join As A Designer',
     'My Orders'=>'My Orders',
     'dashboard'=>'Dashboard',
     'Edit Profile'=>'Edit Profile',

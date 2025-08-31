@@ -1,0 +1,419 @@
+{
+  "tech_stack": [
+    "PHP",
+    "Laravel",
+    "MySQL",
+    "Bootstrap",
+    "Vite",
+    "Sass",
+    "Axios",
+    "DataTables",
+    "PhpSpreadsheet"
+  ],
+  "features": [
+    {
+      "name": "User Authentication & Authorization",
+      "description": "Multi-role authentication system with OTP verification, user registration, login/logout functionality, and role-based access control (Admin, Designer, User, Sales Manager, Area Manager)",
+      "files": [
+        "app/Http/Controllers/Auth/LoginController.php",
+        "app/Http/Controllers/Auth/RegisterController.php",
+        "app/Http/Controllers/Auth/OtpLoginController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "User Authentication API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/login-phone": {
+            "post": {
+              "summary": "Send OTP for phone verification",
+              "tags": ["Authentication"]
+            }
+          },
+          "/verify-otp": {
+            "get": {
+              "summary": "Show OTP verification form",
+              "tags": ["Authentication"]
+            },
+            "post": {
+              "summary": "Verify OTP and authenticate user",
+              "tags": ["Authentication"]
+            }
+          },
+          "/logout": {
+            "post": {
+              "summary": "Logout user",
+              "tags": ["Authentication"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Order Management System",
+      "description": "Complete order lifecycle management including order creation, designer assignment, draft submissions, order acceptance/rejection, and status tracking",
+      "files": [
+        "app/Http/Controllers/Users/OrderController.php",
+        "app/Http/Controllers/Designer/OrderDraftController.php",
+        "app/Http/Controllers/Dashboard/OrderController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Order Management API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/orders/create": {
+            "get": {
+              "summary": "Show order creation form",
+              "tags": ["Orders"]
+            }
+          },
+          "/orders": {
+            "post": {
+              "summary": "Create new order",
+              "tags": ["Orders"]
+            }
+          },
+          "/my-orders": {
+            "get": {
+              "summary": "Get user's orders",
+              "tags": ["Orders"]
+            }
+          },
+          "/order/{order}/accept-draft/{draft}": {
+            "post": {
+              "summary": "Accept order draft",
+              "tags": ["Orders"]
+            }
+          },
+          "/designer/orders/{order}/accept": {
+            "patch": {
+              "summary": "Designer accepts order",
+              "tags": ["Orders"]
+            }
+          },
+          "/designer/orders/{order}/reject": {
+            "patch": {
+              "summary": "Designer rejects order",
+              "tags": ["Orders"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Designer Management",
+      "description": "Designer registration, profile management, order processing, and designer rating system",
+      "files": [
+        "app/Http/Controllers/Frontend/JoinAsDesignerController.php",
+        "app/Http/Controllers/Dashboard/DesignerController.php",
+        "app/Http/Controllers/Users/DesignerRatingController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Designer Management API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/joinasdesigner": {
+            "get": {
+              "summary": "Show designer registration form",
+              "tags": ["Designers"]
+            },
+            "post": {
+              "summary": "Register as designer",
+              "tags": ["Designers"]
+            }
+          },
+          "/designers": {
+            "get": {
+              "summary": "List all designers",
+              "tags": ["Designers"]
+            }
+          },
+          "/rate-designer": {
+            "post": {
+              "summary": "Rate a designer",
+              "tags": ["Designers"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Product & Category Management",
+      "description": "Product catalog management, category organization, and product filtering system",
+      "files": [
+        "app/Http/Controllers/Dashboard/ProductController.php",
+        "app/Http/Controllers/Dashboard/CategoryController.php",
+        "app/Http/Controllers/Frontend/HomeController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Product Management API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/products": {
+            "get": {
+              "summary": "List all products",
+              "tags": ["Products"]
+            }
+          },
+          "/product/{id}": {
+            "get": {
+              "summary": "Get product details",
+              "tags": ["Products"]
+            }
+          },
+          "/categories": {
+            "get": {
+              "summary": "List all categories",
+              "tags": ["Products"]
+            }
+          },
+          "/category/{id}": {
+            "get": {
+              "summary": "Filter products by category",
+              "tags": ["Products"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Installment & Payment Management",
+      "description": "Installment tracking, payment status updates, receipt upload, and payment completion",
+      "files": [
+        "app/Http/Controllers/Users/InstallmentController.php",
+        "app/Http/Controllers/Designer/SalesController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Payment Management API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/installment/update-status": {
+            "post": {
+              "summary": "Update installment status",
+              "tags": ["Payments"]
+            }
+          },
+          "/installment/update-receipt-and-status/{id}": {
+            "post": {
+              "summary": "Upload payment receipt",
+              "tags": ["Payments"]
+            }
+          },
+          "/designer/sales/{sale}/installments": {
+            "post": {
+              "summary": "Create installment record",
+              "tags": ["Payments"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Manufacturing & Installation Tracking",
+      "description": "Track manufacturing progress, installation scheduling, and completion status",
+      "files": [
+        "app/Http/Controllers/Designer/ManufactureAndInstallationController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Manufacturing & Installation API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/designer/manufacture/start/{order}": {
+            "post": {
+              "summary": "Start manufacturing process",
+              "tags": ["Manufacturing"]
+            }
+          },
+          "/designer/manufacture/finish/{order}": {
+            "post": {
+              "summary": "Complete manufacturing",
+              "tags": ["Manufacturing"]
+            }
+          },
+          "/designer/installation/start/{order}": {
+            "post": {
+              "summary": "Start installation",
+              "tags": ["Installation"]
+            }
+          },
+          "/designer/installation/complete/{order}": {
+            "post": {
+              "summary": "Complete installation",
+              "tags": ["Installation"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Notification System",
+      "description": "Real-time notifications for orders, updates, and system events",
+      "files": [
+        "app/Http/Controllers/Users/NotificationController.php",
+        "app/Http/Controllers/Designer/NotificationController.php",
+        "app/Http/Controllers/Dashboard/NotificationController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Notification API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/user/notifications": {
+            "get": {
+              "summary": "Get user notifications",
+              "tags": ["Notifications"]
+            }
+          },
+          "/notifications/{id}": {
+            "delete": {
+              "summary": "Delete notification",
+              "tags": ["Notifications"]
+            }
+          },
+          "/notifications/delete-all-read": {
+            "post": {
+              "summary": "Delete all read notifications",
+              "tags": ["Notifications"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Contact & Support System",
+      "description": "Contact form handling, support ticket management, and customer service",
+      "files": [
+        "app/Http/Controllers/Dashboard/ContactUsController.php",
+        "app/Http/Controllers/Frontend/HomeController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Contact & Support API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/contact": {
+            "get": {
+              "summary": "Show contact form",
+              "tags": ["Contact"]
+            },
+            "post": {
+              "summary": "Submit contact form",
+              "tags": ["Contact"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "User Profile Management",
+      "description": "User profile editing, personal information updates, and account settings",
+      "files": [
+        "app/Http/Controllers/Users/ProfileController.php",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Profile Management API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/profile/edit": {
+            "get": {
+              "summary": "Show profile edit form",
+              "tags": ["Profile"]
+            }
+          },
+          "/profile/update": {
+            "post": {
+              "summary": "Update user profile",
+              "tags": ["Profile"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Frontend Pages & Localization",
+      "description": "Multi-language support (Arabic/English), homepage, about, contact, and product pages",
+      "files": [
+        "app/Http/Controllers/Frontend/HomeController.php",
+        "resources/views/frontend/homepage.blade.php",
+        "resources/views/frontend/about.blade.php",
+        "resources/views/frontend/contact.blade.php",
+        "resources/views/frontend/products.blade.php",
+        "lang/en/",
+        "lang/ar/",
+        "routes/web.php"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Frontend Pages API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/": {
+            "get": {
+              "summary": "Homepage",
+              "tags": ["Frontend"]
+            }
+          },
+          "/about": {
+            "get": {
+              "summary": "About page",
+              "tags": ["Frontend"]
+            }
+          },
+          "/contact": {
+            "get": {
+              "summary": "Contact page",
+              "tags": ["Frontend"]
+            }
+          },
+          "/products": {
+            "get": {
+              "summary": "Products page",
+              "tags": ["Frontend"]
+            }
+          },
+          "/set/lang/{lang}": {
+            "get": {
+              "summary": "Change language",
+              "tags": ["Frontend"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

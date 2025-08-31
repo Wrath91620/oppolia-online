@@ -1,0 +1,19 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:8000",
+  "backendAuthType": "API key",
+  "backendApiKey": "SMS_API_KEY",
+  "backendApiValue": "a1621845a9dcc1e8fc7b226d130a3ddc7bf6475f",
+  "executionArgs": {
+    "projectName": "oppolia-online",
+    "projectPath": "C:\\wamp64\\www\\oppolia-online\\oppolia-online",
+    "testIds": [],
+    "additionalInstruction": "Please focus on testing the main user interface components including the homepage, order creation form, kitchen shape/style selection, multi-language support (Arabic/English), responsive design, and form validation. Test the stepper navigation, image selections, and the overall user experience flow.",
+    "envs": {
+      "API_KEY": "sk-user-8cY0bjxIxK-iRg0Uyh8rVhUG9dQwcNayykCNDLCbUQzSYO6EdJHBnrJmpAjLPvuy2EyrnjzmwhAfZjZ9YKX4Pf_1LX1hBktAmRUnzSjLpAR6RaH7SLn-M0Xv5TzC8NBnbjE"
+    }
+  },
+  "proxy": "http://f3965158-59d2-4e21-9e9d-a8416eb41691:7bkD1RN0Ak1mr5K3OFQ39H0x5NIBAZ75@tun.testsprite.com:8080"
+}

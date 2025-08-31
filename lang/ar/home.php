@@ -23,7 +23,7 @@ return [
     'Register Now'=>'سجل الآن',
     'Send'=>'ارسال',
     'Mobile number verification'=>'التحقق من رقم الجوال',
-    'Join as designer'=>'انضم كمصمم',
+    'Join As A Designer'=>'انضم كمصمم',
     'My Orders'=>'طلباتي',
     'dashboard'=>'لوحة التحكم',
     'Edit Profile'=>'تعديل الملف الشخصي',

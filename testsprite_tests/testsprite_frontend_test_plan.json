@@ -1,0 +1,489 @@
+[
+  {
+    "id": "TC001",
+    "title": "User Registration with OTP Verification",
+    "description": "Verify that a new user can register and authenticate via OTP sent to their phone number.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to registration page"
+      },
+      {
+        "type": "action",
+        "description": "Submit valid phone number and initiate OTP sending"
+      },
+      {
+        "type": "assertion",
+        "description": "Check OTP is sent successfully"
+      },
+      {
+        "type": "action",
+        "description": "Enter correct OTP code"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user account is created and logged in"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "User Login Failure with Invalid OTP",
+    "description": "Confirm that login fails when an invalid OTP is entered during phone verification.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page"
+      },
+      {
+        "type": "action",
+        "description": "Submit valid phone number to receive OTP"
+      },
+      {
+        "type": "action",
+        "description": "Enter incorrect OTP code"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure authentication fails with appropriate error message"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Role-Based Access Control Enforcement",
+    "description": "Ensure that users with different roles (Admin, Designer, User, Sales Manager, Area Manager) have appropriate access rights.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as Admin and navigate to admin-only pages"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is granted"
+      },
+      {
+        "type": "action",
+        "description": "Login as Designer and attempt to access admin-only pages"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is denied"
+      },
+      {
+        "type": "action",
+        "description": "Login as User and access user profile and order pages"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is granted"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Order Creation and Designer Assignment",
+    "description": "Test that a logged-in user can create an order and that sales or area manager can assign it to a designer successfully.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as a normal user"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to order creation form"
+      },
+      {
+        "type": "action",
+        "description": "Fill in all required order details and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify order is created and listed under user's orders"
+      },
+      {
+        "type": "action",
+        "description": "Login as sales or area manager"
+      },
+      {
+        "type": "action",
+        "description": "Assign the new order to a designer"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the order designer assignment is reflected in the system"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Designer Draft Submission and User Approval Flow",
+    "description": "Validate order draft submission by designer and user's ability to accept or reject the draft.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as assigned designer"
+      },
+      {
+        "type": "action",
+        "description": "Submit a draft for assigned order"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure the draft is saved and user is notified"
+      },
+      {
+        "type": "action",
+        "description": "Login as the user who placed the order"
+      },
+      {
+        "type": "action",
+        "description": "View the submitted draft and accept it"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm order status is updated to accepted"
+      },
+      {
+        "type": "action",
+        "description": "Repeat and reject a draft"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify order status is updated to rejected and designer notified"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Designer Registration and Profile Update",
+    "description": "Test the designer registration workflow and ability to update their profile including regional assignments.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to designer registration form"
+      },
+      {
+        "type": "action",
+        "description": "Submit valid registration details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify designer account is created and listed in designer directory"
+      },
+      {
+        "type": "action",
+        "description": "Login as registered designer"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to profile edit page and update profile information including regional assignment"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm profile changes are saved and reflected in the system"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Designer Rating Submission and Viewing",
+    "description": "Verify that users can submit ratings for designers and ratings are displayed correctly.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as a user"
+      },
+      {
+        "type": "action",
+        "description": "Submit a rating for a designer after order completion"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the rating is saved and aggregated rating of the designer updates"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to designer listing page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify designer ratings are visible and accurate"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Product Listing and Category Filtering",
+    "description": "Test product catalog display and the ability to filter products by category dynamically.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to products page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify list of products and categories are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Select a product category to filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm only products belonging to selected category are shown"
+      },
+      {
+        "type": "action",
+        "description": "Access detailed view of a product"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all product details are displayed correctly"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Installment Payment Status Update and Receipt Upload",
+    "description": "Verify installment payment updates including status changes and uploading payment receipts work correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as user or designer"
+      },
+      {
+        "type": "action",
+        "description": "Update installment payment status to paid or pending"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the status updates are saved and shown correctly"
+      },
+      {
+        "type": "action",
+        "description": "Upload payment receipt document for an installment"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify receipt upload succeeds and is accessible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Manufacturing and Installation Status Flow",
+    "description": "Test manufacturing start, finish and installation start, complete statuses are updated and tracked properly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as designer"
+      },
+      {
+        "type": "action",
+        "description": "Start manufacturing process for a designated order"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm manufacturing status is updated to started"
+      },
+      {
+        "type": "action",
+        "description": "Mark manufacturing as finished"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify manufacturing is marked complete"
+      },
+      {
+        "type": "action",
+        "description": "Start installation for the order"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm installation status is updated to started"
+      },
+      {
+        "type": "action",
+        "description": "Complete installation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify installation is marked complete and order is updated accordingly"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Real-Time Notification Delivery and Management",
+    "description": "Ensure users and designers receive real-time notifications for order updates and system events, and can view and delete them.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Trigger order status change for a user's order"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm user receives notification immediately"
+      },
+      {
+        "type": "action",
+        "description": "User views notifications list"
+      },
+      {
+        "type": "assertion",
+        "description": "Notifications are listed with correct details"
+      },
+      {
+        "type": "action",
+        "description": "User deletes a single notification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notification is removed from the list"
+      },
+      {
+        "type": "action",
+        "description": "User triggers delete all read notifications"
+      },
+      {
+        "type": "assertion",
+        "description": "All read notifications are deleted and no longer visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Support Ticket Submission and Tracking via Contact Form",
+    "description": "Validate user can submit support requests through contact form and track open tickets.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to contact form page"
+      },
+      {
+        "type": "action",
+        "description": "Submit a support request with valid details"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm ticket is created and success message displayed"
+      },
+      {
+        "type": "action",
+        "description": "Login as user and check support ticket status"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify ticket is listed with correct details and status"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "User Profile Editing and Persistence",
+    "description": "Test that users and designers can update their profile information and changes persist correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as a user"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to profile edit page"
+      },
+      {
+        "type": "action",
+        "description": "Update personal information fields and submit changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify updates are saved and reflected after page reload"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Frontend Localization Language Switching",
+    "description": "Confirm that the website dynamically switches between Arabic and English languages on user request.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to homepage"
+      },
+      {
+        "type": "action",
+        "description": "Switch site language to Arabic"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all visible text changes to Arabic and layout adjusts if needed"
+      },
+      {
+        "type": "action",
+        "description": "Switch site language back to English"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all text reverts to English correctly"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Error Handling for Invalid Order Data Submission",
+    "description": "Verify the system handles submission of invalid or incomplete order data gracefully with proper error messages.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as user and open order creation form"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form with missing required fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify validation errors are displayed for missing fields"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form with invalid data types or formats"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure system rejects invalid input with explanatory error messages"
+      }
+    ]
+  }
+]

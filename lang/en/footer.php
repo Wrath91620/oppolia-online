@@ -23,11 +23,11 @@ return [
     'Register Now'=>'Register Now',
     'Send'=>'Send',
     'Mobile number verification'=>'Mobile Number verification',
-    'Join as designer'=>'Join AS Designer',
+    'Join As A Designer'=>'Join As A Designer',
     'My Orders'=>'My Orders',
     'dashboard'=>'Dashboard',
 
-    'We at Opolia Online take pride in offering the best and highest-quality types of kitchens.'=>'We at Opolia Online take pride in designing and delivering the best and highest quality kitchens.',
+    'We at Oppolia Online take pride in offering the best and highest-quality types of kitchens.'=>'We at Oppolia Online take pride in designing and delivering the best and highest quality kitchens.',
     'Order now.'=>'Order now',
 
     'New Classic Kitchens'=>'New Classic Kitchens',

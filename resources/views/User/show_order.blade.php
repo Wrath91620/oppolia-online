@@ -4,48 +4,169 @@
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-
-        .timeline {
-            border-left: 2px solid #dee2e6;
-            margin-left: 16px;
+        /* Modern Order Details Page Styling */
+        .order-details-container {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .order-header {
+            background: linear-gradient(135deg, #0A4740, #509F96);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .order-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .order-header h1 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .order-header .back-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .order-header .back-link:hover {
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .order-status-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .status-item:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .status-label {
+            font-weight: 600;
+            color: #495057;
+            min-width: 120px;
+        }
+        
+        .status-value {
+            color: #0A4740;
+            font-weight: 500;
+        }
+        
+        .info-link {
+            color: #0A4740;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .info-link:hover {
+            color: #509F96;
+            transform: scale(1.1);
         }
 
+        .timeline {
+            border-left: 3px solid #e9ecef;
+            margin-left: 20px;
+            padding-left: 20px;
+        }
 
         .timeline-item {
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 20px;
+            padding-left: 40px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
         }
 
         .timeline-marker {
             position: absolute;
-            left: -8px;
+            left: -11px;
             top: 0;
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: #dee2e6;
+            background: #e9ecef;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .current-dot {
-            width: 12px;
-            height: 12px;
-            background: #0A4740;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #0A4740, #509F96);
             border-radius: 50%;
             position: absolute;
-            left: 2px;
-            top: 2px;
+            left: 3px;
+            top: 3px;
+            box-shadow: 0 0 10px rgba(10, 71, 64, 0.3);
         }
 
         .timeline-content {
-            padding: 5px 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
 
         .current {
             font-weight: bold;
             color: #0A4740;
+        }
+        
+        .current .timeline-content {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-color: #0A4740;
         }
 
 
@@ -85,7 +206,57 @@
             color: #ffd700;
         }
         .accordion-body {
-            background-color: #f3f3f3;
+            background-color: #f8f9fa;
+            border-radius: 0 0 12px 12px;
+            padding: 2rem;
+        }
+        
+        .accordion-item {
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .accordion-button {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #0A4740;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            padding: 1.5rem 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-button:hover {
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            color: #0A4740;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #0A4740, #509F96);
+            color: white !important;
+            box-shadow: none;
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Order details text color when accordion is open */
+        .accordion-button:not(.collapsed) + .accordion-collapse .accordion-body {
+            color: #495057;
+        }
+        
+        /* Remove arrow from back button
+        .order-header .back-link i {
+            display: none;
+        } */
+        
+        .accordion-button:focus {
+            border-color: #0A4740;
+            box-shadow: 0 0 0 0.2rem rgba(10, 71, 64, 0.25);
         }
         @if (app()->getLocale() == 'ar')
         .accordion-button::after {
@@ -121,37 +292,64 @@
         .show_order_img{
             width: 328px;
             height: 230px;
-            border-radius: 6.58px;
-            margin-inline: 25px;
+            border-radius: 12px;
+            margin: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+        
+        .show_order_img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         .show_order_font1{
 
-            font-family:"Ubuntu Sans", system-ui;
-            font-size: 18px;
+            font-family:"tajawal";
+            font-size: 16px;
             font-style: normal;
 
             line-height: normal;
         }
         .show_order_border_button{
-            border-radius: 4px;
-            border: 1px solid var(--Dark-Green, #0A4740) !important;
-            padding-left: 20px;
-            padding-right: 20px;
+            border-radius: 8px;
+            border: 2px solid #0A4740 !important;
+            padding: 12px 24px;
             color: #0A4740 !important;
-
+            background: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
+        
+        .show_order_border_button:hover {
+            background: #0A4740 !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 71, 64, 0.3);
+        }
+        
         .show_order_border_button_red{
-            border-radius: 4px;
-            border: 1px solid red !important;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: red !important;
-
+            border-radius: 8px;
+            border: 2px solid #dc3545 !important;
+            padding: 12px 24px;
+            color: #dc3545 !important;
+            background: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .show_order_border_button_red:hover {
+            background: #dc3545 !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
         }
         .more_button{
             color: var(--Gray-Text-Color, #444);
 
-            font-size: 16px;
+            font-size: 14px;
             margin-inline: 15px;
             font-weight: 400;
             line-height: normal;
@@ -178,7 +376,7 @@
                 font-size: 11px;
             }
             .show_order_font1{
-                font-size: 14px;
+                font-size: 13px;
                 padding:2px;
             }
             .accordion-button {
@@ -199,29 +397,32 @@
 
 
 
-    <div class="card m-md-5 p-4">
-        <!-- رسائل التنبيه -->
-
-
-        <div class="d-flex justify-content-between align-items-center mb-4 my-orders-title-border-b">
-            <h1 class="fw-bold mb-0">@lang('order.details_title')</h1>
-            <a href="{{ url('/my-orders') }}" class="black-color">
-                <i class="fas  me-2 "></i> @lang('order.back')
-            </a>
+    <div class="order-details-container">
+        <!-- Header Section -->
+        <div class="order-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 style="color: #FFF;">@lang('order.details_title')</h1>
+                <a href="{{ url('/my-orders') }}" class="back-link">
+                    <i class="fas fa-arrow-left me-2"></i> @lang('order.back')
+                </a>
+            </div>
         </div>
 
-        <div class="row m-4">
-            <div class="col-6 col-md-2 fw-bold mt-2 show_order_font1">@lang('order.order_status') </div>
-            <div class="col-6 col-md-2 mt-2 show_order_font1 Dark_Green">{{ __('order.order_statuses.' . $order->order_status) }}</div>
-
-            <div class="col-6 col-md-2 fw-bold mt-2 show_order_font1">@lang('order.status_details')</div>
-            <div class="col-6 col-md-6 mt-2 show_order_font1">
-                <span class="Dark_Green">{{ __('order.processing_stages.' . $order->processing_stage) }} </span>
-                <!-- زر فتح المودال -->
-                <a  type=button class="Dark_Green" data-bs-toggle="modal" data-bs-target="#stageModal">
-
-                    <span class="more_button">@lang('order.more')</span>
-                </a>
+        <!-- Order Status Section -->
+        <div class="order-status-section">
+            <div class="status-item">
+                <div class="status-label">@lang('order.order_status'):</div>
+                <div class="status-value">{{ __('order.order_statuses.' . $order->order_status) }}</div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-label">@lang('order.status_details'):</div>
+                <div class="status-value">
+                    <span>{{ __('order.processing_stages.' . $order->processing_stage) }}</span>
+                    <a type="button" class="info-link ms-2" data-bs-toggle="modal" data-bs-target="#stageModal" title="@lang('order.more')">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </div>
             </div>
         </div>
 

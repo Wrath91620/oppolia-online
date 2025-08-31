@@ -28,23 +28,24 @@ class OrderController extends Controller
     // حفظ الطلب المقدم
     public function store(Request $request)
     {
+        // التحقق من البيانات
+        $validated = $request->validate([
+            'name' => 'sometimes|string', // Optional name field
+            'email' => 'sometimes|email', // Optional email field
+            'kitchen_area' => 'required|numeric',
+            'kitchen_shape' => 'required|string',
+            'kitchen_type' => 'required|in:قديم,جديد',
+            'expected_cost' => 'required|numeric',
+            'time_range' => 'required|string',
+            'kitchen_style' => 'required|string',
+            'meeting_time' => 'required|date',
+            'length_step' => 'required|numeric',
+            'width_step' => 'required|numeric',
+            'geocode_string' => 'required|string',
+            'region_name' => 'required|string', // اسم sub_region مطلوب
+        ]);
+
         try {
-            // التحقق من البيانات
-            $request->validate([
-                'name' => 'sometimes|string', // Optional name field
-                'email' => 'sometimes|email', // Optional email field
-                'kitchen_area' => 'required|numeric',
-                'kitchen_shape' => 'required|string',
-                'kitchen_type' => 'required|in:قديم,جديد',
-                'expected_cost' => 'required|numeric',
-                'time_range' => 'required|string',
-                'kitchen_style' => 'required|string',
-                'meeting_time' => 'required|date',
-                'length_step' => 'required|numeric',
-                'width_step' => 'required|numeric',
-                'geocode_string' => 'required|string',
-                'region_name' => 'required|string', // اسم sub_region مطلوب
-            ]);
 
             $user = auth()->user();
             if ($request->filled('name') && !$user->name) {
@@ -119,6 +120,28 @@ class OrderController extends Controller
             // التعامل مع الأخطاء
             return redirect()->route('orders.create')->with('error', 'خطأ: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Handle validation errors and redirect back with form data
+     */
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new \Illuminate\Validation\ValidationException($validator, $this->response($this->formatValidationErrors($validator)));
+    }
+
+    /**
+     * Create the response for when a request fails validation.
+     */
+    protected function response(array $errors)
+    {
+        if (request()->expectsJson()) {
+            return response()->json($errors, 422);
+        }
+
+        return redirect()->back()
+            ->withInput()
+            ->withErrors($errors);
     }
 
 

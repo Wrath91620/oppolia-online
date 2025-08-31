@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "test_send_otp_for_phone_verification",
+    "description": "Verify that the /login-phone endpoint successfully sends an OTP to the provided phone number for user authentication."
+  },
+  {
+    "id": "TC002",
+    "title": "test_verify_otp_and_authenticate_user",
+    "description": "Ensure that the /verify-otp POST endpoint correctly verifies the OTP and authenticates the user, granting access based on role."
+  },
+  {
+    "id": "TC003",
+    "title": "test_logout_user",
+    "description": "Test that the /logout endpoint properly logs out the authenticated user and invalidates the session or token."
+  },
+  {
+    "id": "TC004",
+    "title": "test_create_new_order",
+    "description": "Validate that the /orders POST endpoint allows a user to create a new order with all required details and returns the correct order information."
+  },
+  {
+    "id": "TC005",
+    "title": "test_accept_order_draft",
+    "description": "Check that the /order/{order}/accept-draft/{draft} POST endpoint allows a user to accept a draft for a specific order and updates the order status accordingly."
+  },
+  {
+    "id": "TC006",
+    "title": "test_register_as_designer",
+    "description": "Verify that the /joinasdesigner POST endpoint registers a new designer with valid data and stores the profile correctly."
+  },
+  {
+    "id": "TC007",
+    "title": "test_list_all_products",
+    "description": "Ensure that the /products GET endpoint returns a complete and accurate list of all products available in the catalog."
+  },
+  {
+    "id": "TC008",
+    "title": "test_update_installment_status",
+    "description": "Test that the /installment/update-status POST endpoint updates the status of an installment correctly and reflects the changes in the system."
+  },
+  {
+    "id": "TC009",
+    "title": "test_start_manufacturing_process",
+    "description": "Validate that the /designer/manufacture/start/{order} POST endpoint initiates the manufacturing process for the specified order and updates the order status."
+  },
+  {
+    "id": "TC010",
+    "title": "test_get_user_notifications",
+    "description": "Check that the /user/notifications GET endpoint retrieves all notifications for the authenticated user in real-time."
+  }
+]

@@ -10,7 +10,7 @@
 
                     </div>
                     <div class="mt-5">
-                        <p class="myfont_5">@lang('footer.We at Opolia Online take pride in offering the best and highest-quality types of kitchens.')</p>
+                        <p class="myfont_5">@lang('footer.We at Oppolia Online take pride in offering the best and highest-quality types of kitchens.')</p>
                     </div>
                     <div class="mt-5">
 
@@ -62,7 +62,7 @@
                     <div class="footer-section3">
                         <div class="mt-3 "><a class="myfont_5 hover-underline" href="{{route('home.designers') }}">@lang('footer.Designers')</a></div>
                         <div class="mt-3 "><a class="myfont_5 hover-underline" href="{{ route('home.contact') }}">@lang('footer.Contact')</a></div>
-                        <div class="mt-3 "><a class="myfont_5 hover-underline" href="/joinasdesigner">@lang('footer.Join as designer')</a></div>
+                        <div class="mt-3 "><a class="myfont_5 hover-underline" href="/joinasdesigner">@lang('footer.Join As A Designer')</a></div>
                         <div class="mt-3 "><a class="myfont_5 hover-underline" href="/privacypolicy">@lang('footer.Privacy Policy')</a></div>
 
                     </div>
@@ -72,9 +72,9 @@
                             <h5 class="myfont_6">الصفحات الأساسية</h5>
                             <div class="mt-3 "><a href="home.html" class="myfont_5">الصفحة الرئيسية</a></div>
 
-                            <div class="mt-3 "> <a class="myfont_5" href="about.html">عن أوبوليا</a></div>
+                            <div class="mt-3 "> <a class="myfont_5" href="about.html">عن اوبوليا</a></div>
                             <div class="mt-3 "><a class="myfont_5" href="products.html">المنتجات</a></div>
-                            <div class="mt-3 "><a class="myfont_5" href="designers.html">مصممي أوبوليا</a></div>
+                            <div class="mt-3 "><a class="myfont_5" href="designers.html">مصممي اوبوليا</a></div>
                             <div class="mt-3 "><a class="myfont_5" href="contact.html">تواصل معنا</a></div>
                         </div>
                     </div>

@@ -60,7 +60,7 @@ return [
         'ستة أشهر' => 'ستة أشهر',
     ],
     'details_title' => 'تفاصيل الطلب',
-    'back' => 'رجوع ⬅',
+    'back' => 'رجوع',
 
     'status_details' => 'تفاصيل الحالة',
     'more' => 'المزيد',
@@ -159,8 +159,9 @@ return [
 
     'username' => 'اسم المستخدم',
     'email' => 'البريد الإلكتروني',
-    'next_button' => 'التالي ⬅',
-    'back_button' => ' ➡ السابق ',
+    'personal_information' => 'المعلومات الشخصية',
+    'next_button' => 'التالي',
+    'back_button' => 'السابق ',
     'kitchen_area_and_shape' => 'مساحة وشكل المطبخ',
     'select_expected_cost' => 'اختر التكلفة المتوقعة',
     'cost_below_20' => 'أقل من 20,000',
@@ -178,6 +179,12 @@ return [
     'search_location' => 'ابحث عن موقع:',
     'search_here_placeholder' => 'ابحث هنا...',
     'submit_request' => 'تقديم الطلب',
+    
+    // Order creation steps
+    'step_kitchen_area_shape' => 'مساحة وشكل المطبخ',
+    'step_kitchen_type_cost' => 'نوع المطبخ والتكلفة',
+    'step_time_style' => 'المدة الزمنية وستايل المطبخ',
+    'step_meeting_location' => 'وقت اللقاء والموقع',
 
 
 

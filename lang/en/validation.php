@@ -176,6 +176,57 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        // Order form validation messages
+        'name' => [
+            'string' => 'The name must be a valid text.',
+        ],
+        'email' => [
+            'email' => 'Please enter a valid email address.',
+        ],
+        'kitchen_area' => [
+            'required' => 'Please specify the kitchen area.',
+            'numeric' => 'The kitchen area must be a number.',
+        ],
+        'kitchen_shape' => [
+            'required' => 'Please select a kitchen shape.',
+            'string' => 'The kitchen shape must be a valid text.',
+        ],
+        'kitchen_type' => [
+            'required' => 'Please select a kitchen type.',
+            'in' => 'The selected kitchen type is invalid.',
+        ],
+        'expected_cost' => [
+            'required' => 'Please specify the expected cost.',
+            'numeric' => 'The expected cost must be a number.',
+        ],
+        'time_range' => [
+            'required' => 'Please specify the time range.',
+            'string' => 'The time range must be a valid text.',
+        ],
+        'kitchen_style' => [
+            'required' => 'Please select a kitchen style.',
+            'string' => 'The kitchen style must be a valid text.',
+        ],
+        'meeting_time' => [
+            'required' => 'Please specify the meeting time.',
+            'date' => 'Please enter a valid date and time for the meeting.',
+        ],
+        'length_step' => [
+            'required' => 'Please select the kitchen location on the map.',
+            'numeric' => 'The location coordinates must be valid numbers.',
+        ],
+        'width_step' => [
+            'required' => 'Please select the kitchen location on the map.',
+            'numeric' => 'The location coordinates must be valid numbers.',
+        ],
+        'geocode_string' => [
+            'required' => 'Please specify the address on the map.',
+            'string' => 'The address must be a valid text.',
+        ],
+        'region_name' => [
+            'required' => 'Please specify the region on the map.',
+            'string' => 'The region name must be a valid text.',
+        ],
     ],
 
     /*
@@ -189,6 +240,20 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'kitchen_area' => 'Kitchen Area',
+        'kitchen_shape' => 'Kitchen Shape',
+        'kitchen_type' => 'Kitchen Type',
+        'expected_cost' => 'Expected Cost',
+        'time_range' => 'Time Range',
+        'kitchen_style' => 'Kitchen Style',
+        'meeting_time' => 'Meeting Time',
+        'length_step' => 'Kitchen Location',
+        'width_step' => 'Kitchen Location',
+        'geocode_string' => 'Address',
+        'region_name' => 'Region',
+    ],
 
 ];

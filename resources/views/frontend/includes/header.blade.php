@@ -195,7 +195,7 @@
                         </li>
                         <a href="{{route('home.designers') }}" class="myfont_1  hover-underline border-3 mx-2 {{ Route::currentRouteName() == 'home.designers' ? 'myfont_2' : '' }}">@lang('home.Designers')</a>
                         <a href="{{ route('home.contact') }}" class="myfont_1  hover-underline border-3 mx-2 {{ Route::currentRouteName() == 'home.contact' ? 'myfont_2' : '' }}">@lang('home.Contact')</a>
-                        <a href="{{ route('joinasdesigner.create') }}" class="myfont_1 hover-underline  border-3 mx-2 {{ Route::currentRouteName() == 'joinasdesigner.create' ? 'myfont_2' : '' }}">@lang('home.Join as designer')</a>
+                        <a href="{{ route('joinasdesigner.create') }}" class="myfont_1 hover-underline  border-3 mx-2 {{ Route::currentRouteName() == 'joinasdesigner.create' ? 'myfont_2' : '' }}">@lang('home.Join As A Designer')</a>
                         @php
                             $allowedRoles = ['admin', 'Area manager', 'Sales manager'];
                         @endphp
@@ -275,7 +275,7 @@
                             <a class="nav-link mydesplayright" href="{{ route('home.contact') }}">@lang('home.Contact')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mydesplayright" href="{{ route('joinasdesigner.create') }}">@lang('home.Join as designer')</a>
+                            <a class="nav-link mydesplayright" href="{{ route('joinasdesigner.create') }}">@lang('home.Join As A Designer')</a>
                         </li>
 
 

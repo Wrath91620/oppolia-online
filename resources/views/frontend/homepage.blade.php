@@ -7,12 +7,127 @@
         .rotate-180 {
             transform: rotate(180deg);
         }
+        
+        /* Unified spacing for homepage sections */
+        .homepage-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .homepage-section {
+            width: 100%;
+        }
+        
+        /* Remove individual section margins/padding */
+        .homepage-section .container,
+        .homepage-section .container-fluid {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        /* Specific section overrides if needed */
+        .banner-wrapper {
+            margin-bottom: 0 !important;
+        }
+        
+        .kitchen-section {
+            margin-bottom: 0 !important;
+        }
+        
+        .steps-section {
+            margin-bottom: 0 !important;
+        }
+        
+        .benefits-section {
+            margin-bottom: 0 !important;
+        }
+        
+        .why-us-section {
+            margin-bottom: 0 !important;
+        }
+        
+        .showcase-section {
+            margin-bottom: 0 !important;
+        }
+        
+        .german-quality-section {
+            margin-bottom: 0 !important;
+        }
+        
+        .designers-section {
+            margin-bottom: 0 !important;
+        }
+        
+        /* Enhanced responsive design for Why Us section */
+        .why-us-section .card {
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+            .why-us-section .card {
+                margin-bottom: 1rem;
+            }
+            
+            .why-us-section .why-us-icon {
+                font-size: 14px !important;
+                margin-bottom: 0.5rem;
+            }
+            
+            .why-us-section .why-us-text {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                padding: 15px !important;
+            }
+            
+            .why-us-section .card .d-flex {
+                gap: 0.5rem;
+            }
+        }
+        
+        /* Tablet optimizations */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .why-us-section .why-us-text {
+                font-size: 15px !important;
+                padding: 20px !important;
+            }
+        }
+        
+        /* Ensure equal height on all screen sizes */
+        .why-us-section .row {
+            align-items: stretch;
+        }
+        
+        .why-us-section .col-12.col-md-6 {
+            display: flex;
+        }
+        
+        .why-us-section .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Add 2em gap to all flex containers in why-us cards */
+        .why-us-section .d-flex.flex-column.flex-md-row {
+            gap: 2em !important;
+        }
+        
+        /* Fix why-us-icon alignment */
+        .why-us-icon {
+            width: 130px !important;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
     </style>
 @endsection
 @section('content')
 
+<div class="homepage-sections">
     <!-- Banner -->
-    <section class="banner-wrapper position-relative">
+    <section class="homepage-section banner-wrapper position-relative">
         <div class="d-block d-md-none position-relative" dir="rtl">
             <img
                 src="{{ asset('Frontend/assets/images/banners/Banner-homeMob.webp') }}"
@@ -27,7 +142,7 @@
                 class="banner-text-overlay position-absolute top-50 start-50  text-center px-3">
                 <h1 class="banner-text text-nowrap reveal-text reveal-line">
                     @lang('homepage.Your ideas for a perfect home')<br>
-                    @lang('homepage.Executing them has become easier')<span class="highlight">@lang('homepage.With Opolia Online!')</span>
+                    @lang('homepage.Executing them has become easier')<span class="highlight">@lang('homepage.With Oppolia Online!')</span>
                 </h1>
             </div>
         </div>
@@ -41,20 +156,20 @@
             <div class="banner-text-overlay text-center">
                 <h1 class="banner-text text-nowrap reveal-text reveal-line">
                     @lang('homepage.Your ideas for a perfect home')<br>
-                    @lang('homepage.Executing them has become easier')<span class="highlight">@lang('homepage.With Opolia Online!')</span>
+                    @lang('homepage.Executing them has become easier')<span class="highlight">@lang('homepage.With Oppolia Online!')</span>
                 </h1>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="kitchen-section position-relative mb-3 justify-content-center"
+    <section class="homepage-section kitchen-section position-relative justify-content-center"
              style="background-image: url('{{ asset('Frontend/assets/images/gallery/about-section.webp') }}');
                  background-position: center;">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-md-12 d-flex align-items-center justify-content-center p-4">
-                    <h2 class="sub-title">@lang('homepage.About Oppolia')</h2>
+                    <h2 class="section-title2">@lang('homepage.About Oppolia')</h2>
                 </div>
                 <div class="col-12 col-md-9 col-lg-8 p-2 position-relative d-flex align-items-center justify-content-center">
                     <img src="{{ asset('Frontend/assets/images/banners/Vid.png') }}"
@@ -66,7 +181,7 @@
     </section>
 
     <!-- Steps Section -->
-    <section class="steps-section">
+    <section class="homepage-section steps-section">
         <div class="container">
             <!-- Heading -->
             <div class="text-center mb-4">
@@ -260,36 +375,53 @@
         </div>
     </section>
 
-
-
     <!-- Benefits Section -->
-    <section class="container p-5">
+    <section class="homepage-section benefits-section">
+        <div class="container p-5">
         <div class="row">
             <div class="col-12 ">
                 <h3 class="section-title2 fw-bold mb-5 ">@lang('homepage.What Will You Gain from Oppolia Online Services?')</h3>
                 <div class="row ">
                     <div class="col-12 col-md-4 mb-4">
-                        <h5 class="text-title"><span class="badge bg-success number-span ms-2">1</span>@lang('homepage.Visualize It Clearly')</h5>
+                        <div class="text-title">
+                            <span class="badge bg-success number-span">1</span>
+                            <h5 class="text-title">@lang('homepage.Visualize It Clearly')</h5>
+                        </div>
                         <p class="text-content">@lang('homepage.Get a realistic design that helps you picture your new kitchen before you even start.')</p>
                     </div>
                     <div class="col-12 col-md-4 mb-4">
-                        <h5 class="text-title"><span class="badge bg-success number-span ms-2">2</span>@lang('homepage.Your Style, Your Choice')</h5>
+                        <div class="text-title">
+                            <span class="badge bg-success number-span">2</span>
+                            <h5 class="text-title">@lang('homepage.Your Style, Your Choice')</h5>
+                        </div>
                         <p class="text-content">@lang('homepage.Pick the design you love — we’ll tailor the cost study to fit your budget.')</p>
                     </div>
                     <div class="col-12 col-md-4 mb-4">
-                        <h5 class="text-title"><span class="badge bg-success number-span ms-2">3</span>@lang('homepage.With You Every Step of the Way')</h5>
+                        <div class="text-title">
+                            <span class="badge bg-success number-span">3</span>
+                            <h5 class="text-title">@lang('homepage.With You Every Step of the Way')</h5>
+                        </div>
                         <p class="text-content">@lang('homepage.From the first idea to final execution, we’re by your side to ensure everything fits your needs.')</p>
                     </div>
                     <div class="col-12 col-md-4 mb-4">
-                        <h5 class="text-title"><span class="badge bg-success number-span ms-2">4</span>@lang('homepage.Your Taste in Every Detail')</h5>
+                        <div class="text-title">
+                            <span class="badge bg-success number-span">4</span>
+                            <h5 class="text-title">@lang('homepage.Your Taste in Every Detail')</h5>
+                        </div>
                         <p class="text-content">@lang('homepage.Choose the materials, colors, and finishes that reflect your style.')</p>
                     </div>
                     <div class="col-12 col-md-4 mb-4">
-                        <h5 class="text-title"><span class="badge bg-success number-span ms-2">5</span>@lang('homepage.Delivered to Your Door')</h5>
+                        <div class="text-title">
+                            <span class="badge bg-success number-span">5</span>
+                            <h5 class="text-title">@lang('homepage.Delivered to Your Door')</h5>
+                        </div>
                         <p class="text-content">@lang('homepage.Your kitchen is delivered to your home effortlessly, with no hassle.')</p>
                     </div>
                     <div class="col-12 col-md-4 mb-4">
-                        <h5 class="text-title"><span class="badge bg-success number-span ms-2">6</span>@lang('homepage.Support That Stays')</h5>
+                        <div class="text-title">
+                            <span class="badge bg-success number-span">6</span>
+                            <h5 class="text-title">@lang('homepage.Support That Stays')</h5>
+                        </div>
                         <p class="text-content">@lang('homepage.Even after installation, we’re here to ensure everything runs smoothly and you enjoy your new kitchen to the fullest.')</p>
                     </div>
                 </div>
@@ -297,24 +429,25 @@
 
             <div class="col-12 text-center mt-5">
                 <img src="{{ asset('Frontend/assets/images/gallery/Saudi-Guy.webp') }}"
-                     class="img-fluid h-100 w-100"
+                class="img-fluid"
                      alt="Customer Happy in Kitchen"
                      >
             </div>
         </div>
+        </div>
     </section>
 
     <!-- Why Us Section -->
-    <section class="py-5" style="background: rgba(80, 159, 150, 0.47);">
+    <section class="homepage-section why-us-section py-5" style="background: rgba(80, 159, 150, 0.47);">
         <div class="container text-center" >
             <h2 class="fw-bold mb-5" style="color: rgba(10, 71, 64, 1);">@lang('homepage.Why Choose Us?')</h2>
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center align-items-stretch">
 
                 <!-- Card 1 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center " style="gap: 2em;">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -322,7 +455,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.Unique Designs')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We offer a wide range of modern designs to suit every taste, with customization options to meet your specific needs.')</p>
                             </div>
                         </div>
@@ -330,10 +463,10 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -348,7 +481,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.High Quality')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We use the finest materials and techniques in every piece we create to ensure comfort and durability.')</p>
                             </div>
                         </div>
@@ -356,10 +489,10 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center  h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="75" height="70" viewBox="0 0 75 70" fill="none">
@@ -370,7 +503,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.Exceptional Customer Experience')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We care about customer satisfaction and strive to deliver outstanding service from start to finish.')</p>
                             </div>
                         </div>
@@ -378,10 +511,10 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -392,7 +525,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.Competitive Pricing')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We offer market-competitive prices without compromising on quality.')</p>
                             </div>
                         </div>
@@ -400,10 +533,10 @@
                 </div>
 
                 <!-- Card 5 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -411,7 +544,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.Easy Communication')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We are with you every step of the way—from design to installation—and provide follow-up even after completion.')</p>
                             </div>
                         </div>
@@ -419,10 +552,10 @@
                 </div>
 
                 <!-- Card 6 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -437,7 +570,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.Convenient Delivery')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We ensure safe and hassle-free delivery of all items.')</p>
                             </div>
                         </div>
@@ -445,10 +578,10 @@
                 </div>
 
                 <!-- Card 7 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -457,7 +590,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.On-Time Commitment')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We stick to agreed timelines for delivery and installation to ensure a smooth, stress-free experience.')</p>
                             </div>
                         </div>
@@ -465,10 +598,10 @@
                 </div>
 
                 <!-- Card 8 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div class="card text-end shadow p-4 w-100 h-100 justify-content-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="card text-end shadow p-4 w-100 d-flex flex-column justify-content-center tryout h-100">
                         <div class="d-flex flex-column flex-md-row align-items-center
-            text-center ">
+            text-center h-100">
 
                         <div class="d-flex flex-column align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="70" viewBox="0 0 71 70" fill="none">
@@ -480,7 +613,7 @@
                                 </svg>
                                 <h5 class="why-us-icon">@lang('homepage.Warranty')</h5>
                             </div>
-                            <div class="ms-3">
+                            <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                                 <p class="why-us-text">@lang('homepage.We offer a 15-year warranty on our products, reflecting our confidence in the quality of our designs. This warranty covers all manufacturing or material-related defects.')</p>
                             </div>
                         </div>
@@ -491,60 +624,71 @@
         </div>
     </section>
 
-
-
     <!-- Showcase Section -->
-    <section class="container-fluid p-5">
+    <section class="homepage-section showcase-section">
+        <div class="container-fluid p-5">
         <div class="container text-center">
             <h2 class="fw-bold" style="color: rgba(10, 71, 64, 1) !important;">
                 @lang('homepage.We guarantee safe, hassle-free delivery — every step of the way.')
             </h2>
-            <p class="mt-3" style="font-size: 16px;">
+            <p class="mt-3" style="font-size: 20px;">
                 @lang('homepage.Thinking about a new kitchen? We’re here to help.')<br>
                 @lang('homepage.At Oppolia Online, bringing your dream kitchen to life has never been easier. Your request is our mission!')
             </p>
 
-            <!-- add row-cols-1 row-cols-sm-2 row-cols-md-4 -->
-            <div class="row g-4 mt-4 justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <!-- Showcase Grid with Equal Sizing -->
+            <div class="row g-4 mt-4 justify-content-center align-items-stretch">
 
-                <div class="col-12 col-sm-12 d-flex flex-column align-items-center">
-                    <a href="{{ route('category.products', 26) }}" class="tryout">
-                        <img src="{{ asset('Frontend/assets/images/gallery/NewClassic.webp') }}"
-                             class="img-fluid rounded shadow w-100"
-                             alt="مطابخ نيو كلاسيك">
+                <div class="col-12 col-sm-6 col-md-3 d-flex">
+                    <a href="{{ route('category.products', 26) }}" class="d-flex flex-column w-100">
+                        <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
+                            <img src="{{ asset('Frontend/assets/images/gallery/NewClassic.webp') }}"
+                                 class="img-fluid rounded shadow w-100 h-100"
+                                 style="object-fit: cover;"
+                                 alt="مطابخ نيو كلاسيك">
+                        </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
                             @lang('homepage.New Classic Kitchens')
                         </h5>
                     </a>
                 </div>
 
-                <div class="col-12 col-sm-12 d-flex flex-column align-items-center">
-                    <a href="{{ route('category.products', 27) }}" class="tryout">
-                        <img src="{{ asset('Frontend/assets/images/gallery/Modern.webp') }}"
-                             class="img-fluid rounded shadow w-100"
-                             alt="مطابخ حديثة">
+                <div class="col-12 col-sm-6 col-md-3 d-flex">
+                    <a href="{{ route('category.products', 27) }}" class="d-flex flex-column w-100">
+                        <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
+                            <img src="{{ asset('Frontend/assets/images/gallery/Modern.webp') }}"
+                                 class="img-fluid rounded shadow w-100 h-100"
+                                 style="object-fit: cover;"
+                                 alt="مطابخ حديثة">
+                        </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
                             @lang('homepage.Modern Kitchens')
                         </h5>
                     </a>
                 </div>
 
-                <div class="col-12 col-sm-12 d-flex flex-column align-items-center">
-                    <a href="{{ route('category.products', 29) }}" class="tryout">
-                        <img src="{{ asset('Frontend/assets/images/gallery/L-Shaped.webp') }}"
-                             class="img-fluid rounded shadow w-100"
-                             alt="مطابخ على شكل حرف L">
+                <div class="col-12 col-sm-6 col-md-3 d-flex">
+                    <a href="{{ route('category.products', 29) }}" class="d-flex flex-column w-100">
+                        <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
+                            <img src="{{ asset('Frontend/assets/images/gallery/L-Shaped.webp') }}"
+                                 class="img-fluid rounded shadow w-100 h-100"
+                                 style="object-fit: cover;"
+                                 alt="مطابخ على شكل حرف L">
+                        </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
                             @lang('homepage.L-Shaped Kitchens')
                         </h5>
                     </a>
                 </div>
 
-                <div class="col-12 col-sm-12 d-flex flex-column align-items-center">
-                    <a href="{{ route('category.products', 30) }}" class="tryout">
-                        <img src="{{ asset('Frontend/assets/images/gallery/U-Shaped.webp') }}"
-                             class="img-fluid rounded shadow w-100"
-                             alt="مطابخ على شكل حرف U">
+                <div class="col-12 col-sm-6 col-md-3 d-flex">
+                    <a href="{{ route('category.products', 30) }}" class="d-flex flex-column w-100">
+                        <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
+                            <img src="{{ asset('Frontend/assets/images/gallery/U-Shaped.webp') }}"
+                                 class="img-fluid rounded shadow w-100 h-100"
+                                 style="object-fit: cover;"
+                                 alt="مطابخ على شكل حرف U">
+                        </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
                         @lang('homepage.U-Shaped Kitchens')
                         </h5>
@@ -553,11 +697,12 @@
 
             </div>
         </div>
+        </div>
     </section>
 
-
     <!-- German Quality Slider -->
-    <section class="container p-5">
+    <section class="homepage-section german-quality-section">
+        <div class="container p-5">
         <div class="row align-items-center justify-content-center">
             <!-- Image Slider -->
 
@@ -623,13 +768,15 @@
             </div>
 
         </div>
+        </div>
     </section>
 
     <!-- Designers Section -->
-    <section class="container text-center p-5">
+    <section class="homepage-section designers-section">
+        <div class="container text-center p-5">
         <h2 class="section-title">@lang('homepage.Oppolia Online Designers!')</h2>
         <p class="mt-3 designers-text">
-            @lang('homepage.At Opolia Online, we have a professional team of specialized designers who combine creativity with competence.')
+            @lang('homepage.At Oppolia Online, we have a professional team of specialized designers who combine creativity with competence.')
             <br> @lang('homepage.Our designers work to understand your needs and provide you with the perfect home, turning your ideas into reality.')
         </p>
         <a href="/joinasdesigner">
@@ -835,6 +982,9 @@
         </div>
 
 
+        </div>
     </section>
+
+</div>
 
 @endsection

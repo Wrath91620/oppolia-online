@@ -1,0 +1,343 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Markdown Preview</title>
+      <style>
+        body {
+          font-family: sans-serif;
+          padding: 40px;
+          line-height: 1.6;
+          background: #fdfdfd;
+          color: #333;
+        }
+        pre {
+          background: #f4f4f4;
+          padding: 10px;
+          border-radius: 5px;
+          overflow-x: auto;
+        }
+        code {
+          font-family: monospace;
+          background: #eee;
+          padding: 2px 4px;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          margin-top: 20px;
+        }
+        th, td {
+          border: 1px solid #ccc;
+          padding: 8px 12px;
+          text-align: left;
+        }
+        th {
+          background-color: #f2f2f2;
+          font-weight: bold;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>TestSprite AI Testing Report(MCP)</h1>
+<hr>
+<h2>1️⃣ Document Metadata</h2>
+<ul>
+<li><strong>Project Name:</strong> oppolia-online</li>
+<li><strong>Version:</strong> N/A</li>
+<li><strong>Date:</strong> 2025-08-25</li>
+<li><strong>Prepared by:</strong> TestSprite AI Team</li>
+</ul>
+<hr>
+<h2>2️⃣ Requirement Validation Summary</h2>
+<h3>Requirement: User Authentication &amp; Authorization</h3>
+<ul>
+<li><strong>Description:</strong> Multi-role authentication system with OTP verification, user registration, login/logout functionality, and role-based access control.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC001</li>
+<li><strong>Test Name:</strong> test_send_otp_for_phone_verification</li>
+<li><strong>Test Code:</strong> <a href="./TC001_test_send_otp_for_phone_verification.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 419 Page Expired - CSRF token mismatch</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/647b2add-0b20-4a36-8601-5122a5048cab</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> The /login-phone endpoint failed due to missing or invalid CSRF token. This indicates a session timeout or token validation issue that needs to be addressed in the authentication flow.</li>
+</ul>
+<hr>
+<h4>Test 2</h4>
+<ul>
+<li><strong>Test ID:</strong> TC002</li>
+<li><strong>Test Name:</strong> test_verify_otp_and_authenticate_user</li>
+<li><strong>Test Code:</strong> <a href="./TC002_test_verify_otp_and_authenticate_user.py">code_file</a></li>
+<li><strong>Test Error:</strong> AssertionError - OTP verification logic failure</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/8344e610-f279-4033-b4a4-d0c0e0331c85</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> OTP verification failed to authenticate the user properly. This suggests issues with OTP generation, validation, or role-based authentication logic.</li>
+</ul>
+<hr>
+<h4>Test 3</h4>
+<ul>
+<li><strong>Test ID:</strong> TC003</li>
+<li><strong>Test Name:</strong> test_logout_user</li>
+<li><strong>Test Code:</strong> <a href="./TC003_test_logout_user.py">code_file</a></li>
+<li><strong>Test Error:</strong> AssertionError - Session invalidation failure</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/b3676fbf-80ba-415b-9720-a11725bb1918</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Logout functionality failed to properly invalidate the user session. This indicates session management issues that could pose security risks.</li>
+</ul>
+<hr>
+<h3>Requirement: Order Management System</h3>
+<ul>
+<li><strong>Description:</strong> Complete order lifecycle management including order creation, designer assignment, draft submissions, and status tracking.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC004</li>
+<li><strong>Test Name:</strong> test_create_new_order</li>
+<li><strong>Test Code:</strong> <a href="./TC004_test_create_new_order.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 419 Page Expired - CSRF token mismatch</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/218daca4-f80f-4515-9d38-06858a429aba</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Order creation failed due to CSRF token issues. This prevents users from creating new orders and indicates session management problems.</li>
+</ul>
+<hr>
+<h4>Test 2</h4>
+<ul>
+<li><strong>Test ID:</strong> TC005</li>
+<li><strong>Test Name:</strong> test_accept_order_draft</li>
+<li><strong>Test Code:</strong> <a href="./TC005_test_accept_order_draft.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 419 - CSRF token mismatch</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/563001dc-708d-4888-b354-5a5240e41b63</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Order draft acceptance failed due to CSRF token validation issues, preventing the order workflow from progressing.</li>
+</ul>
+<hr>
+<h3>Requirement: Designer Management</h3>
+<ul>
+<li><strong>Description:</strong> Designer registration, profile management, and order processing system.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC006</li>
+<li><strong>Test Name:</strong> test_register_as_designer</li>
+<li><strong>Test Code:</strong> <a href="./TC006_test_register_as_designer.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 419 Page Expired - CSRF token mismatch</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/f6153eef-36f6-4987-9320-888a4c09fa2a</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Designer registration failed due to CSRF token issues, preventing new designers from joining the platform.</li>
+</ul>
+<hr>
+<h3>Requirement: Product &amp; Category Management</h3>
+<ul>
+<li><strong>Description:</strong> Product catalog management and category organization system.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC007</li>
+<li><strong>Test Name:</strong> test_list_all_products</li>
+<li><strong>Test Code:</strong> <a href="./TC007_test_list_all_products.py">code_file</a></li>
+<li><strong>Test Error:</strong> ConnectionResetError - Proxy connection failure</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/52622b0c-da66-4b82-93c2-047232f65a92</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Product listing failed due to network connectivity issues through the proxy, indicating infrastructure problems.</li>
+</ul>
+<hr>
+<h3>Requirement: Installment &amp; Payment Management</h3>
+<ul>
+<li><strong>Description:</strong> Installment tracking, payment status updates, and payment completion system.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC008</li>
+<li><strong>Test Name:</strong> test_update_installment_status</li>
+<li><strong>Test Code:</strong> <a href="./TC008_test_update_installment_status.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 419 - CSRF token mismatch</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/12be8877-9370-40dc-b3e5-e97bd7562e6f</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Installment status updates failed due to CSRF token validation issues, affecting payment processing workflow.</li>
+</ul>
+<hr>
+<h3>Requirement: Manufacturing &amp; Installation Tracking</h3>
+<ul>
+<li><strong>Description:</strong> Track manufacturing progress, installation scheduling, and completion status.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC009</li>
+<li><strong>Test Name:</strong> test_start_manufacturing_process</li>
+<li><strong>Test Code:</strong> <a href="./TC009_test_start_manufacturing_process.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 419 - CSRF token mismatch</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/fa860fb2-bf1c-4a75-bdcd-b18512567417</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> Manufacturing process initiation failed due to CSRF token issues, preventing order progression in the production pipeline.</li>
+</ul>
+<hr>
+<h3>Requirement: Notification System</h3>
+<ul>
+<li><strong>Description:</strong> Real-time notifications for orders, updates, and system events.</li>
+</ul>
+<h4>Test 1</h4>
+<ul>
+<li><strong>Test ID:</strong> TC010</li>
+<li><strong>Test Name:</strong> test_get_user_notifications</li>
+<li><strong>Test Code:</strong> <a href="./TC010_test_get_user_notifications.py">code_file</a></li>
+<li><strong>Test Error:</strong> HTTP 401 Unauthorized - Authentication failure</li>
+<li><strong>Test Visualization and Result:</strong> https://www.testsprite.com/dashboard/mcp/tests/6fee8d1e-d01e-40d6-86a7-9fc26dd79b89/9bc76c38-991a-4307-b56f-3455a392bc9a</li>
+<li><strong>Status:</strong> ❌ Failed</li>
+<li><strong>Severity:</strong> HIGH</li>
+<li><strong>Analysis / Findings:</strong> User notifications failed due to authentication issues, preventing users from receiving important system updates.</li>
+</ul>
+<hr>
+<h2>3️⃣ Coverage &amp; Matching Metrics</h2>
+<ul>
+<li><strong>100% of product requirements tested</strong></li>
+<li><strong>0% of tests passed</strong></li>
+<li><strong>Key gaps / risks:</strong></li>
+</ul>
+<blockquote>
+<p>All 10 test cases failed, indicating critical issues with CSRF token management, authentication, and network connectivity. The primary risk is that the entire application is non-functional due to session and security middleware issues.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Total Tests</th>
+<th>✅ Passed</th>
+<th>⚠️ Partial</th>
+<th>❌ Failed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Authentication &amp; Authorization</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Order Management System</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Designer Management</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Product &amp; Category Management</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Installment &amp; Payment Management</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Manufacturing &amp; Installation Tracking</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Notification System</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>4️⃣ Critical Issues Summary</h2>
+<h3>Primary Issues Identified:</h3>
+<ol>
+<li>
+<p><strong>CSRF Token Management (8/10 failures)</strong></p>
+<ul>
+<li>All POST requests failing with HTTP 419 &quot;Page Expired&quot; errors</li>
+<li>Indicates session timeout or token validation problems</li>
+<li>Affects: Authentication, Order Management, Designer Registration, Payment Processing</li>
+</ul>
+</li>
+<li>
+<p><strong>Authentication System (2/10 failures)</strong></p>
+<ul>
+<li>OTP verification logic not working properly</li>
+<li>Logout functionality failing to invalidate sessions</li>
+<li>User notification access blocked by authentication issues</li>
+</ul>
+</li>
+<li>
+<p><strong>Network Infrastructure (1/10 failures)</strong></p>
+<ul>
+<li>Proxy connection issues preventing product listing</li>
+<li>Indicates potential server or network configuration problems</li>
+</ul>
+</li>
+</ol>
+<h3>Recommendations:</h3>
+<ol>
+<li>
+<p><strong>Immediate Actions Required:</strong></p>
+<ul>
+<li>Review and fix CSRF token middleware configuration</li>
+<li>Implement proper session management and token validation</li>
+<li>Test authentication flow end-to-end</li>
+<li>Verify network connectivity and proxy settings</li>
+</ul>
+</li>
+<li>
+<p><strong>Security Considerations:</strong></p>
+<ul>
+<li>Current CSRF token issues could indicate security vulnerabilities</li>
+<li>Session management needs immediate attention</li>
+<li>Authentication flow requires comprehensive testing</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing Environment:</strong></p>
+<ul>
+<li>Consider disabling CSRF protection in test environment</li>
+<li>Implement proper test authentication setup</li>
+<li>Add comprehensive error handling and logging</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>5️⃣ Next Steps</h2>
+<ol>
+<li><strong>Priority 1:</strong> Fix CSRF token management and session handling</li>
+<li><strong>Priority 2:</strong> Resolve authentication and OTP verification issues</li>
+<li><strong>Priority 3:</strong> Address network connectivity problems</li>
+<li><strong>Priority 4:</strong> Implement comprehensive testing framework</li>
+<li><strong>Priority 5:</strong> Add proper error handling and user feedback</li>
+</ol>
+<p><strong>Note:</strong> This test report should be presented to the development team for immediate code fixes. The application appears to have critical security and functionality issues that need urgent attention.</p>
+
+    </body>
+    </html>
+  

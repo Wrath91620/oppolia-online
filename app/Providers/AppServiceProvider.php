@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         View::composer(['frontend.*', 'User.*'], function ($view) {
-            $categories = cache()->remember('categories', 60*60, function () {
-                return Category::all();
+            $categories = cache()->remember('categories', 60 * 60, function () {
+                return Category::where('id', '!=', 31)->get();
             });
             $view->with('categories', $categories);
         });

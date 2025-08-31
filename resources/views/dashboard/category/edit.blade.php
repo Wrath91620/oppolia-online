@@ -6,13 +6,13 @@
    <div dir="rtl">
     <h1>تعديل الفئة</h1>
 
-    @if($errors->any())
-        <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-    @endif
+            @if($errors->any())
+            <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
     <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
         @csrf

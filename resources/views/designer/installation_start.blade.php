@@ -5,13 +5,13 @@
 @section('content')
 
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('error') }}
         </div>
     @endif
@@ -22,7 +22,7 @@
                 <h4>بدء التركيب</h4>
             </div>
             <div class="card-body">
-                <p class="alert ">
+                <p class="alert " dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                     <strong>🔨 تم تجهيز المطبخ، ويمكنك الآن بدء عملية التركيب!</strong>
                     قم بتأكيد بدء التركيب حتى يتم تحديث حالة الطلب.
                 </p>

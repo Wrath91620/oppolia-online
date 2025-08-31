@@ -57,6 +57,12 @@ return [
         'أربعة أشهر' => 'Four Months',
         'خمسة أشهر' => 'Five Months',
         'ستة أشهر' => 'Six Months',
+        'سبعة أشهر' => 'Seven Months',
+        'ثمانية أشهر' => 'Eight Months',
+        'تسعة أشهر' => 'Nine Months',
+        'عشرة أشهر' => 'Ten Months',
+        'أحد عشر شهر' => 'Eleven Months',
+        'اثنا عشر شهر' => 'Twelve Months',
     ],
 
     'details_title' => 'Order Details',

@@ -23,12 +23,12 @@
 @section('content')
 
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
     @if($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             @foreach($errors->all() as $error)
                 <p>{{ $error }}</p>
             @endforeach
@@ -90,7 +90,7 @@
                 @endforeach
             </ul>
         @else
-            <div class="alert alert-info mt-3 text-end">
+            <div class="alert alert-info mt-3 text-end" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                 لا توجد إشعارات لعرضها.
             </div>
         @endif

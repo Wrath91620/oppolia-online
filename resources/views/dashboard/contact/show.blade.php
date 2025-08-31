@@ -29,7 +29,7 @@
 
             <div class="mb-3">
                 <strong>نص الرسالة:</strong>
-                <div class="alert alert-light border">
+                <div class="alert alert-light border" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                     {{ $contact->message }}
                 </div>
             </div>

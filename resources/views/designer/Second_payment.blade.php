@@ -103,14 +103,14 @@
                             </div>
                     @else
                         <!-- عرض رابط التنزيل للملفات الأخرى -->
-                            <div class="alert alert-info">
+                            <div class="alert alert-info" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                                 <a href="{{ asset('storage/' . $installments->first()->payment_receipt) }}" download class="btn btn-primary">
                                     <i class="fas fa-download"></i> تنزيل الملف
                                 </a>
                             </div>
                         @endif
                     @else
-                        <div class="alert alert-warning">لا يوجد إيصال مرفق</div>
+                        <div class="alert alert-warning" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">لا يوجد إيصال مرفق</div>
                     @endif
                     <div class="row m-2">
                         <div class="col-md-6">

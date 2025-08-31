@@ -5,13 +5,13 @@
 @section('content')
 
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('error') }}
         </div>
     @endif
@@ -22,7 +22,7 @@
                 <h4>تأكيد وصول الطلب</h4>
             </div>
             <div class="card-body">
-                <p class="alert alert-info">
+                <p class="alert alert-info" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                     <strong>📦 تم شحن المطبخ وهو الآن في المملكة العربية السعودية!</strong>
                     يمكنك تأكيد استلام الطلب لإكمال باقي الإجراءات.
                 </p>

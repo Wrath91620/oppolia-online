@@ -13,12 +13,12 @@
     </style>
 
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
     @if(session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             <strong>خطأ:</strong> {{ session('error') }}
         </div>
 

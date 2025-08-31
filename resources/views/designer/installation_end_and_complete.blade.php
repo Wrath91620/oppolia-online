@@ -5,13 +5,13 @@
 @section('content')
 
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('error') }}
         </div>
     @endif
@@ -22,7 +22,7 @@
                 <h4>إنهاء التركيب وإتمام الطلب</h4>
             </div>
             <div class="card-body">
-                <p class="alert alert-info">
+                <p class="alert alert-info" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                     <strong>🎉 تم الانتهاء من التركيب بنجاح!</strong>
                     قم بتأكيد إنهاء الطلب حتى يتم تحديث حالته إلى "مكتمل".
                 </p>

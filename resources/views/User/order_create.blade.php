@@ -98,6 +98,19 @@
             color: #dc3545;
         }
         
+        /* RTL Slider Fix for Arabic */
+        [dir="rtl"] input[type="range"] {
+            direction: rtl;
+        }
+        
+        [dir="rtl"] input[type="range"]::-webkit-slider-thumb {
+            transform: scaleX(-1);
+        }
+        
+        [dir="rtl"] input[type="range"]::-moz-range-thumb {
+            transform: scaleX(-1);
+        }
+        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -549,21 +562,21 @@
 
                     <!-- رسائل النجاح والأخطاء -->
                     @if (session('success'))
-                        <div class="alert alert-success" role="alert" dir="rtl">
+                        <div class="alert alert-success" role="alert" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                             <i class="bi bi-check-circle"></i>
                             {{ session('success') }}
                         </div>
                     @endif
 
                     @if (session('error'))
-                        <div class="alert alert-danger" role="alert" dir="rtl">
+                        <div class="alert alert-danger" role="alert" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                             <i class="bi bi-exclamation-triangle"></i>
                             {{ session('error') }}
                         </div>
                     @endif
 
                     @if ($errors->any())
-                        <div class="alert alert-danger" role="alert" dir="rtl">
+                        <div class="alert alert-danger" role="alert" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                             <i class="bi bi-exclamation-triangle"></i>
                             <strong>{{ app()->getLocale() == 'ar' ? 'يرجى تصحيح الأخطاء التالية:' : 'Please correct the following errors:' }}</strong>
                             <ul class="mb-0 mt-2">
@@ -609,10 +622,12 @@
                             <h5 class="text-center mb-3">@lang('order.kitchen_area_and_shape')</h5>
 
                             <div class="mb-3">
-                                <label for="kitchen_area">@lang('order.kitchen_area'):</label>
-                                <input type="range" name="kitchen_area" id="kitchen_area"
-                                       value="{{ old('kitchen_area') ?? 6 }}" min="1" max="100" style="accent-color: #0A4740;">
-                                <span id="kitchen_area_value" style="display: inline-block; vertical-align: middle; line-height: 1; margin-left: 10px;">{{ old('kitchen_area') ?? 6 }}m<sup>2</sup></span>
+                                <label for="kitchen_area" class="mb-2">@lang('order.kitchen_area'):</label>
+                                <div class="d-flex align-items-center gap-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                                    <input type="range" name="kitchen_area" id="kitchen_area"
+                                           value="{{ old('kitchen_area') ?? 6 }}" min="1" max="100" style="accent-color: #0A4740; width: 200px;">
+                                    <span id="kitchen_area_value" class="fw-bold" style="color: #0A4740;">{{ old('kitchen_area') ?? 6 }}m<sup>2</sup></span>
+                                </div>
                                 @error('kitchen_area')
                                 <p style="color: red;">{{ $message }}</p>
                                 @enderror
@@ -747,18 +762,19 @@
                         <div class="form-step {{ $errors->has('time_range') || $errors->has('kitchen_style') ? 'has-errors' : '' }}" id="form-step-{{ $hasName ? 2 : 3 }}">
                             <h5 class="text-center mb-3">@lang('order.time_and_style')</h5>
 
-                            <!-- Time Range --><div class="mb-3">
-                                <label for="time_range_slider">@lang('order.time_range'):</label>
-                                <input type="range" id="time_range_slider" min="0" max="5" step="1" value="{{ $defaultTimeIndex }}" style="accent-color: #0A4740;">
-
-                                <!-- يعرض حسب اللغة الحالية -->
-                                <span id="time_range_value">
-        @if(app()->getLocale() == 'ar')
-                                        {{ ["شهر", "شهرين", "ثلاثة أشهر", "أربعة أشهر", "خمسة أشهر", "ستة أشهر"][$defaultTimeIndex] }}
-                                    @else
-                                        {{ ["One Month", "Two Months", "Three Months", "Four Months", "Five Months", "Six Months"][$defaultTimeIndex] }}
-                                    @endif
-    </span>
+                            <!-- Time Range -->
+                            <div class="mb-3">
+                                <label for="time_range_slider" class="mb-2">@lang('order.time_range'):</label>
+                                <div class="d-flex align-items-center gap-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                                    <input type="range" id="time_range_slider" min="0" max="5" step="1" value="{{ $defaultTimeIndex }}" style="accent-color: #0A4740; width: 200px;">
+                                    <span id="time_range_value" class="fw-bold" style="color: #0A4740;">
+                                        @php
+                                            $timeRangeKeys = ['شهر', 'شهرين', 'ثلاثة أشهر', 'أربعة أشهر', 'خمسة أشهر', 'ستة أشهر'];
+                                            $currentKey = $timeRangeKeys[$defaultTimeIndex];
+                                        @endphp
+                                        {{ __('order.time_ranges.' . $currentKey) }}
+                                    </span>
+                                </div>
 
                                 <!-- التخزين دائمًا بالعربية -->
                                 <input type="hidden" name="time_range" id="time_range_hidden" value="{{ ["شهر", "شهرين", "ثلاثة أشهر", "أربعة أشهر", "خمسة أشهر", "ستة أشهر"][$defaultTimeIndex] }}">
@@ -819,7 +835,7 @@
                         </div>
 
 
-                        <!-- الخطوة 5: وقت اللقاء والموقع -->
+                        <!-- الخطوة 5: وقت اللقاء والموقع - DISABLED FOR TESTING -->
                         <div class="form-step {{ $errors->has('meeting_time') || $errors->has('length_step') || $errors->has('width_step') ? 'has-errors' : '' }}" id="form-step-{{ $hasName ? 3 : 4 }}">
                             <h5 class="text-center mb-3">@lang('order.meeting_and_location')</h5>
 
@@ -1123,24 +1139,7 @@
         }
     </script>
 
-    <!-- كود تحديث عرض قيمة شريط المدة الزمنية وتعيين القيمة النصية في الحقل المخفي -->
-    <script>
-        const timeOptions = @json($timeOptions);
-        var timeSlider = document.getElementById('time_range_slider');
-        var timeDisplay = document.getElementById('time_range_value');
-        var timeHidden = document.getElementById('time_range_hidden');
-        if(timeSlider && timeDisplay && timeHidden){
-            // Set initial values from old input or default
-            var initialValue = timeSlider.value;
-            timeDisplay.innerText = timeOptions[initialValue];
-            timeHidden.value = timeOptions[initialValue];
-            
-            timeSlider.addEventListener('input', function(){
-                timeDisplay.innerText = timeOptions[this.value];
-                timeHidden.value = timeOptions[this.value];
-            });
-        }
-    </script>
+
 
     <!-- تنسيق الدوائر (Stepper) وتنسيق اختيار الصور -->
 
@@ -1222,10 +1221,25 @@
         // تحديد لغة الصفحة من Laravel
         const currentLang = "{{ app()->getLocale() }}"; // 'ar' أو 'en'
 
+        // Initialize the display with current value
+        if (slider && valueDisplay && hiddenInput) {
+            const initialIndex = parseInt(slider.value);
+            valueDisplay.textContent = timeRanges[currentLang][initialIndex];
+            hiddenInput.value = arabicValues[initialIndex];
+            
+            // Initialize the CSS custom property for slider fill
+            const percentage = (initialIndex / 5) * 100;
+            slider.style.setProperty('--range-progress', percentage + '%');
+        }
+
         slider.addEventListener('input', function() {
             const index = parseInt(this.value);
             valueDisplay.textContent = timeRanges[currentLang][index]; // يعرض حسب اللغة
             hiddenInput.value = arabicValues[index]; // يخزن بالعربية دائمًا
+            
+            // Update the CSS custom property for slider fill
+            const percentage = (index / 5) * 100;
+            this.style.setProperty('--range-progress', percentage + '%');
         });
     </script>
 
@@ -1266,6 +1280,14 @@
             height: 6px !important;
         }
         
+        /* RTL Firefox progress fill */
+        [dir="rtl"] input[type="range"]::-moz-range-progress {
+            background: #0A4740 !important;
+            border-radius: 3px !important;
+            height: 6px !important;
+            /* Firefox automatically handles RTL direction */
+        }
+        
         input[type="range"]::-moz-range-thumb {
             background: #0A4740 !important;
             border: none !important;
@@ -1291,9 +1313,14 @@
         
         /* Webkit progress fill */
         input[type="range"]::-webkit-slider-runnable-track {
-            background: linear-gradient(to right, #0A4740 0%, #0A4740 var(--range-progress, 50%), #e0e0e0 var(--range-progress, 50%), #e0e0e0 100%) !important;
+            background: linear-gradient(to right, #0A4740 0%, #0A4740 var(--range-progress, 0%), #e0e0e0 var(--range-progress, 0%), #e0e0e0 100%) !important;
             border-radius: 3px !important;
             height: 6px !important;
+        }
+        
+        /* RTL Webkit progress fill */
+        [dir="rtl"] input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to left, #0A4740 0%, #0A4740 var(--range-progress, 0%), #e0e0e0 var(--range-progress, 0%), #e0e0e0 100%) !important;
         }
         
         input[type="range"]::-webkit-slider-thumb {
@@ -1317,6 +1344,49 @@
         #time_range_slider {
             accent-color: #0A4740 !important;
         }
+        
+        /* RTL Slider Fix - Visual only, keep logical behavior */
+        [dir="rtl"] input[type="range"] {
+            /* Don't change direction - keep logical behavior */
+        }
     </style>
+
+    <script>
+        // RTL Slider Fix for Arabic - Visual fill only
+        document.addEventListener('DOMContentLoaded', function() {
+            const isRTL = document.documentElement.dir === 'rtl' || '{{ app()->getLocale() }}' === 'ar';
+            
+            if (isRTL) {
+                const sliders = document.querySelectorAll('input[type="range"]');
+                sliders.forEach(slider => {
+                    // Keep logical behavior but adjust visual fill
+                    slider.addEventListener('input', function() {
+                        const value = this.value;
+                        const min = this.min;
+                        const max = this.max;
+                        const percentage = ((value - min) / (max - min)) * 100;
+                        
+                        // Set the percentage normally - CSS handles RTL direction
+                        this.style.setProperty('--range-progress', percentage + '%');
+                    });
+                    
+                    // Initialize the RTL fill
+                    slider.dispatchEvent(new Event('input'));
+                });
+            }
+        });
+        
+        // Initialize all sliders with proper progress on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const allSliders = document.querySelectorAll('input[type="range"]');
+            allSliders.forEach(slider => {
+                const value = slider.value;
+                const min = slider.min;
+                const max = slider.max;
+                const percentage = ((value - min) / (max - min)) * 100;
+                slider.style.setProperty('--range-progress', percentage + '%');
+            });
+        });
+    </script>
 
 @endsection

@@ -59,15 +59,15 @@
 
     <div class="container p-4" >
         @if(session('success'))
-            <div class="alert alert-success">@lang('joinasdesigner.success')</div>
+            <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">@lang('joinasdesigner.success')</div>
         @endif
 
         @if(session('error'))
-            <div class="alert alert-danger">@lang('joinasdesigner.error')</div>
+            <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">@lang('joinasdesigner.error')</div>
         @endif
 
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                 <ul class="mb-0">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

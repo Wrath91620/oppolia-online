@@ -193,10 +193,10 @@
 @section('content')
 
     @if(session('success'))
-        <div class="alert alert-success">{{ __('edit_profile.success') }}</div>
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">{{ __('edit_profile.success') }}</div>
     @endif
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             <ul class="mb-0">
                 <strong>{{ __('edit_profile.errors_header') }}</strong>
                 @foreach ($errors->all() as $error)

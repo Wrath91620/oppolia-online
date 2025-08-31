@@ -53,13 +53,13 @@
                             
                             <!-- Success/Error Messages -->
                             @if (session('success'))
-                                <div class="alert alert-success text-center" role="alert">
+                                <div class="alert alert-success text-center" role="alert" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                                     {{ session('success') }}
                                 </div>
                             @endif
 
                             @if (session('error'))
-                                <div class="alert alert-danger text-center" role="alert">
+                                <div class="alert alert-danger text-center" role="alert" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                                     {{ session('error') }}
                                 </div>
                             @endif

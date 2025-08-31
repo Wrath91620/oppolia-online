@@ -116,7 +116,7 @@
                                 </div>
                         @else
                             <!-- عرض ملفات أخرى غير معروفة -->
-                                <div class="alert alert-info">
+                                <div class="alert alert-info" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span>ملف مرفق ({{ $extension }})</span>
                                         <a href="{{ asset($filePath) }}"

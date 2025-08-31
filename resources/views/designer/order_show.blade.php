@@ -81,13 +81,13 @@
 @section('content')
 
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('error') }}
         </div>
     @endif
@@ -411,9 +411,9 @@
                 </form>
             </div>
         @elseif($order->order_status === "accepted" && $order->approved_designer_id != $designer->id)
-            <div class="alert alert-info text-center">تم قبول الطلب من قبل مصمم آخر</div>
+            <div class="alert alert-info text-center" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">تم قبول الطلب من قبل مصمم آخر</div>
         @elseif($order->order_status === "accepted" && $order->approved_designer_id == $designer->id)
-            <div class="alert alert-success text-center">لقد قمت بقبول الطلب</div>
+            <div class="alert alert-success text-center" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">لقد قمت بقبول الطلب</div>
         @endif
     </div>
     </div>

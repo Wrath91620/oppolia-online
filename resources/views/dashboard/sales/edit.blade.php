@@ -5,13 +5,13 @@
 @section('content')
 
     @if (session('success'))
-        <div style="color: green;" dir="rtl">
+        <div style="color: green;" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
 
     @if (session('error'))
-        <div style="color: red;" dir="rtl">
+        <div style="color: red;" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('error') }}
         </div>
     @endif
@@ -120,7 +120,7 @@
             @if (!$disableEdit)
                 <button type="submit" class="btn btn-success">💾 حفظ التعديلات</button>
             @else
-                <div class="alert alert-danger text-center">
+                <div class="alert alert-danger text-center" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                     🚫 لا يمكن التعديل لأن مجموع الدفعات يساوي السعر بعد الخصم ويوجد 3 دفعات.
                 </div>
             @endif

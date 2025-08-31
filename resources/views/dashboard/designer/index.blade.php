@@ -10,12 +10,12 @@
 @section('content')
 
     @if (session('success'))
-        <div style="color: green;">
+        <div style="color: green;" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('success') }}
         </div>
     @endif
     @if (session('error'))
-        <div style="color: red;">
+        <div style="color: red;" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
             {{ session('error') }}
         </div>
     @endif

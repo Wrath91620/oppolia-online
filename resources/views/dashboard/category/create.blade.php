@@ -11,13 +11,13 @@
    <div dir="rtl">
     <h1>إضافة فئة جديدة</h1>
 
-    @if($errors->any())
-        <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-    @endif
+            @if($errors->any())
+            <div class="alert alert-danger" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
     <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
         @csrf

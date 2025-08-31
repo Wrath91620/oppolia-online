@@ -90,16 +90,16 @@
 
     <div class="container p-2">
         @if (session('success'))
-            <div style="color: green;" dir="rtl">
-                {{ session('success') }}
-            </div>
-        @endif
+                            <div style="color: green;" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        @if (session('error'))
-            <div style="color: red;" dir="rtl">
-                {{ session('error') }}
-            </div>
-        @endif
+            @if (session('error'))
+                <div style="color: red;" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+                    {{ session('error') }}
+                </div>
+            @endif
 
         <form method="POST" action="{{ route('home.contact.store') }}">
             @csrf

@@ -28,7 +28,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("/Frontend/assets/images/icons/O-bg.svg") no-repeat center center;
+            background: url("/Frontend/assets/images/icons/o.svg") no-repeat center center;
             background-size: 150px auto;
             opacity: 0;
             transform: scale(0.8);

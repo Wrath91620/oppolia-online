@@ -99,6 +99,185 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
+
+        /* ✅ Images Grid Styling */
+        .images-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* العنصر الحاوي لكل صورة */
+        .images-grid .thumb {
+            flex: 0 0 calc(50% - 6px); /* صورتين بالعرض على الموبايل */
+        }
+
+        /* الصورة نفسها */
+        .images-grid .thumb img {
+            width: 100%;
+            height: auto;            /* تحافظ على النسبة */
+            display: block;
+            border-radius: 8px;
+        }
+
+        .lightbox-thumb {
+            display: block;
+            text-decoration: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lightbox-thumb:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .lightbox-thumb .show_order_img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-thumb:hover .show_order_img {
+            transform: scale(1.05);
+        }
+
+        /* ✅ Lightbox Modal Styling */
+        .lightbox-modal .modal-content {
+            background: #f8f9fa;
+            border-radius: 16px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .lightbox-modal .modal-header {
+            background: linear-gradient(135deg, #0A4740, #509F96);
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem 2rem;
+            position: relative;
+        }
+
+        .lightbox-modal .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(20px, -20px);
+        }
+
+        .lightbox-modal .modal-title {
+            font-weight: 700;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lightbox-modal .btn-close {
+            filter: invert(1);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lightbox-modal .btn-close:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .lightbox-modal .modal-body {
+            padding: 0;
+            background: white;
+        }
+
+        .lightbox-modal .carousel {
+            border-radius: 0;
+        }
+
+        .lightbox-modal .carousel-item {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            transition: none !important;
+        }
+
+        .lightbox-modal .carousel-item img {
+            max-height: 70vh;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: none !important;
+            transform: none !important;
+        }
+
+        .lightbox-modal .carousel-inner {
+            transition: none !important;
+        }
+
+        .lightbox-modal .carousel {
+            transition: none !important;
+        }
+
+        .lightbox-modal .carousel-control-prev,
+        .lightbox-modal .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 71, 64, 0.8);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-modal .carousel-control-prev:hover,
+        .lightbox-modal .carousel-control-next:hover {
+            background: rgba(10, 71, 64, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-modal .carousel-control-prev-icon,
+        .lightbox-modal .carousel-control-next-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Image counter */
+        .lightbox-modal .image-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(10, 71, 64, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        /* ✅ PDF Icon Styling */
+        .pdf-button .pdf-icon {
+            color: #0A4740;
+            transition: color 0.3s ease;
+        }
+
+        .pdf-button:hover .pdf-icon {
+            color: #FFFFFF;
+        }
+        
         
         .info-link:hover {
             color: #509F96;
@@ -106,9 +285,10 @@
         }
 
         .timeline {
-            border-left: 3px solid #e9ecef;
-            margin-left: 20px;
-            padding-left: 20px;
+            border-left: none; /* remove full border */
+            margin-left: 0;
+            padding-left: 0;
+            position: relative;
         }
 
         .timeline-item {
@@ -117,33 +297,48 @@
             margin-bottom: 25px;
             transition: all 0.3s ease;
         }
+        /* Single per-step segment; defaults to gray (incomplete) */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 8.5px; /* align with thumb center */
+            top: 40px; /* from center of thumb */
+            width: 3px;
+            height: 40px; /* fixed height to connect to next thumb */
+            background: #D3D3D3; /* incomplete */
+            z-index: 0;
+        }
+        /* Do not draw a segment after the last item */
+        .timeline-item:last-child::after { display: none; }
+        /* Completed or active segments turn green */
+        .timeline-item.completed::after,
+        .timeline-item.active::after { background: #0A4740; }
         
-        .timeline-item:hover {
+        .timeline-content:hover {
             transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #0A4740;
         }
 
         .timeline-marker {
             position: absolute;
-            left: -11px;
-            top: 0;
+            left: 0; /* align thumb with text start */
+            top: 50%;
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #e9ecef;
+            background: #D3D3D3; /* default not complete */
             border: 3px solid white;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        .timeline-item.completed .timeline-marker,
+        .timeline-item.active .timeline-marker {
+            background: #0A4740;
         }
 
-        .current-dot {
-            width: 14px;
-            height: 14px;
-            background: linear-gradient(135deg, #0A4740, #509F96);
-            border-radius: 50%;
-            position: absolute;
-            left: 3px;
-            top: 3px;
-            box-shadow: 0 0 10px rgba(10, 71, 64, 0.3);
-        }
+        /* remove current-dot visuals entirely */
+        .current-dot { display: none; }
 
         .timeline-content {
             padding: 15px 20px;
@@ -403,7 +598,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h1 style="color: #FFF;">@lang('order.details_title')</h1>
                 <a href="{{ url('/my-orders') }}" class="back-link">
-                    <i class="fas fa-arrow-left me-2"></i> @lang('order.back')
+                @lang('order.back') <i class="fas fa-arrow-left me-2"></i> 
                 </a>
             </div>
         </div>
@@ -456,7 +651,9 @@
                                 <div class="col-6 col-md-2 mt-2 show_order_font1">{{ $order->expected_cost }} @lang('order.saudi_riyals')</div>
 
                                 <div class="col-6 col-md-2 mt-2 fw-bold show_order_font1"> @lang('order.time_range'):</div>
-                                <div class="col-6 col-md-2 mt-2 show_order_font1">{{ __('order.time_ranges.' . $order->time_range) }} </div>
+                                <div class="col-6 col-md-2 mt-2 show_order_font1">
+                                    {{ __('order.time_ranges.' . $order->time_range) }}
+                                </div>
 
                                 <div class="col-6 col-md-2 fw-bold mt-2 show_order_font1">@lang('order.order_status'):</div>
                                 <div class="col-6 col-md-2 mt-2 show_order_font1">{{ __('order.order_statuses.' . $order->order_status) }}</div>
@@ -479,12 +676,24 @@
                     <div class="accordion-body">
                         <div class="user-info">
                             @foreach ($orderDraft as $draft)
-                                @if($draft->images)
-                                    @foreach(json_decode($draft->images) as $image)
+                                @php
+                                    $images = $draft->images ? json_decode($draft->images, true) : [];
+                                @endphp
 
-                                        <img class="show_order_img" src="{{ asset('storage/' . $image) }}" alt="Draft Image" >
-                                    @endforeach
-
+                                @if(!empty($images))
+                                    <div class="images-grid">
+                                        @foreach($images as $idx => $image)
+                                            <a href="#"
+                                               class="thumb lightbox-thumb"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#lightbox-{{ $draft->id }}"
+                                               data-index="{{ $idx }}">
+                                                <img class="show_order_img"
+                                                     src="{{ asset('storage/' . $image) }}"
+                                                     alt="Draft Image {{ $idx + 1 }}">
+                                            </a>
+                                        @endforeach
+                                    </div>
                                 @else
                                     @lang('order.No images')
                                 @endif
@@ -496,8 +705,8 @@
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6" style="display: inline-flex;">
 
-                                            <a class="btn show_order_border_button " href="{{ asset('storage/' . $draft->pdf) }}" target="_blank">
-                                                <img src="{{asset('Frontend/assets/images/icons/Vector202.png')}}" alt="Icon" width="20" height="20" style="margin-left: 5px;">
+                                            <a class="btn show_order_border_button pdf-button" href="{{ asset('storage/' . $draft->pdf) }}" target="_blank">
+                                                <i class="fas fa-file-pdf pdf-icon" style="margin-left: 5px;"></i>
                                                 @lang('order.view_pdf')</a>
                                         </div>
                                     </div>
@@ -605,6 +814,46 @@
                                         </div>
                                     </div>
 
+                                    <!-- ✅ Lightbox Modal for Draft Images -->
+                                    <div class="modal fade lightbox-modal" id="lightbox-{{ $draft->id }}" tabindex="-1" aria-labelledby="lightboxLabel-{{ $draft->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="lightboxLabel-{{ $draft->id }}">@lang('order.design')</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="carousel-{{ $draft->id }}" class="carousel slide" data-bs-ride="false">
+                                                        <div class="carousel-inner">
+                                                            @foreach($images as $idx => $image)
+                                                                <div class="carousel-item {{ $idx === 0 ? 'active' : '' }}">
+                                                                    <img src="{{ asset('storage/' . $image) }}" 
+                                                                         class="d-block w-100" 
+                                                                         alt="Draft Image {{ $idx + 1 }}">
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                        @if(count($images) > 1)
+                                                            <button class="carousel-control-prev" type="button">
+                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Previous</span>
+                                                            </button>
+                                                            <button class="carousel-control-next" type="button">
+                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Next</span>
+                                                            </button>
+                                                        @endif
+                                                        @if(count($images) > 1)
+                                                            <div class="image-counter">
+                                                                <span class="current-image">1</span> / <span class="total-images">{{ count($images) }}</span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
 
                             @endforeach
@@ -639,7 +888,12 @@
                                     <div class="col-6 col-md-2 mt-2 show_order_font1">{{ $order->sale->amount_paid }} {{ __('order.saudi_riyals') }}</div>
 
                                     <div class="col-6 col-md-2 fw-bold mt-2 show_order_font1">{{ __('order.status') }}:</div>
-                                    <div class="col-6 col-md-2 mt-2 show_order_font1">{{ __('order.statuses.' . $order->sale->status) }}</div>
+                                    <div class="col-6 col-md-2 mt-2 show_order_font1 {{ $order->sale->status === 'completed' ? 'text-success fw-bold' : '' }}">
+                                        {{ __('order.statuses.' . $order->sale->status) }}
+                                        @if($order->sale->status === 'completed')
+                                            <i class="fas fa-check-circle ms-2" style="color: #0A4740;"></i>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -922,14 +1176,17 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
+                        @php
+                            $currentIndex = array_search($order->processing_stage, $all_stages, true);
+                            if ($currentIndex === false) { $currentIndex = 0; }
+                        @endphp
                         <div class="timeline">
-                            @foreach($all_stages as $stage)
-                                <div class="timeline-item {{ $stage === $order->processing_stage ? 'current' : '' }}">
-                                    <div class="timeline-marker">
-                                        @if($stage === $order->processing_stage)
-                                            <div class="current-dot"></div>
-                                        @endif
-                                    </div>
+                            @foreach($all_stages as $idx => $stage)
+                                @php
+                                    $rowState = $idx < $currentIndex ? 'completed' : ($idx === $currentIndex ? 'active' : '');
+                                @endphp
+                                <div class="timeline-item {{ $rowState }} {{ $stage === $order->processing_stage ? 'current' : '' }}">
+                                    <div class="timeline-marker"></div>
                                     <div class="timeline-content">
                                         {{ __('order.processing_stages.' . $stage) }}
                                         @if($stage === $order->processing_stage)
@@ -1073,6 +1330,97 @@
                         console.log("المودال مغلق! سيتم إعادة تحميل الصفحة...");
                         location.reload(); // إعادة تحميل الصفحة
                     });
+                });
+            </script>
+
+            <!-- ✅ Lightbox JavaScript -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Initialize all lightbox modals
+                    document.querySelectorAll('.lightbox-modal').forEach(function(modal) {
+                        var carouselEl = modal.querySelector('.carousel');
+                        if (carouselEl) {
+                            // Create carousel instance with auto-slide disabled and no transitions
+                            var carousel = new bootstrap.Carousel(carouselEl, {
+                                interval: false,
+                                ride: false,
+                                wrap: true
+                            });
+                            
+                            // Disable CSS transitions on carousel elements
+                            carouselEl.style.transition = 'none';
+                            var carouselInner = carouselEl.querySelector('.carousel-inner');
+                            if (carouselInner) {
+                                carouselInner.style.transition = 'none';
+                            }
+                        }
+                    });
+
+                    // Handle thumbnail clicks
+                    document.querySelectorAll('.lightbox-thumb').forEach(function (thumb) {
+                        thumb.addEventListener('click', function () {
+                            var modalId = this.getAttribute('data-bs-target');
+                            var index = parseInt(this.getAttribute('data-index'), 10) || 0;
+                            var modalEl = document.querySelector(modalId);
+                            var carouselEl = modalEl.querySelector('.carousel');
+
+                            // Get or create carousel instance
+                            var carousel = bootstrap.Carousel.getInstance(carouselEl);
+                            if (!carousel) {
+                                carousel = new bootstrap.Carousel(carouselEl, {
+                                    interval: false,
+                                    ride: false,
+                                    wrap: true
+                                });
+                            }
+
+                            // Navigate to clicked image when modal opens
+                            var onShown = function () {
+                                setTimeout(function() {
+                                    carousel.to(index);
+                                    updateImageCounter(modalEl, index + 1);
+                                }, 100);
+                                modalEl.removeEventListener('shown.bs.modal', onShown);
+                            };
+                            modalEl.addEventListener('shown.bs.modal', onShown);
+                        });
+                    });
+
+                    // Update image counter when carousel slides
+                    document.querySelectorAll('.lightbox-modal .carousel').forEach(function(carousel) {
+                        carousel.addEventListener('slid.bs.carousel', function(event) {
+                            var modal = this.closest('.lightbox-modal');
+                            var currentIndex = event.to + 1;
+                            updateImageCounter(modal, currentIndex);
+                        });
+                    });
+
+                    // Handle navigation button clicks manually
+                    document.querySelectorAll('.lightbox-modal .carousel-control-prev, .lightbox-modal .carousel-control-next').forEach(function(button) {
+                        button.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            var carouselEl = this.closest('.carousel');
+                            var carousel = bootstrap.Carousel.getInstance(carouselEl);
+                            if (carousel) {
+                                if (this.classList.contains('carousel-control-prev')) {
+                                    carousel.prev();
+                                } else {
+                                    carousel.next();
+                                }
+                            }
+                        });
+                    });
+
+                    function updateImageCounter(modal, currentIndex) {
+                        var counter = modal.querySelector('.image-counter');
+                        if (counter) {
+                            var currentSpan = counter.querySelector('.current-image');
+                            if (currentSpan) {
+                                currentSpan.textContent = currentIndex;
+                            }
+                        }
+                    }
                 });
             </script>
 

@@ -11,7 +11,7 @@ return [
     'order_statuses' => [
         'accepted' => 'Accepted',
         'rejected' => 'Rejected',
-        'closed' => 'Closed',
+        'closed' => 'Completed',
         'pending' => 'Pending'
     ],
     'processing_stages' => [
@@ -51,18 +51,28 @@ return [
 
 
     'time_ranges' => [
-        'شهر' => 'One Month',
-        'شهرين' => 'Two Months',
-        'ثلاثة أشهر' => 'Three Months',
-        'أربعة أشهر' => 'Four Months',
-        'خمسة أشهر' => 'Five Months',
-        'ستة أشهر' => 'Six Months',
-        'سبعة أشهر' => 'Seven Months',
-        'ثمانية أشهر' => 'Eight Months',
-        'تسعة أشهر' => 'Nine Months',
-        'عشرة أشهر' => 'Ten Months',
-        'أحد عشر شهر' => 'Eleven Months',
-        'اثنا عشر شهر' => 'Twelve Months',
+        'شهر' => '1 Month',
+        'شهرين' => '2 Months',
+        'ثلاثة أشهر' => '3 Months',
+        'أربعة أشهر' => '4 Months',
+        'خمسة أشهر' => '5 Months',
+        'ستة أشهر' => '6 Months',
+        'سبعة أشهر' => '7 Months',
+        'ثمانية أشهر' => '8 Months',
+        'تسعة أشهر' => '9 Months',
+        'عشرة أشهر' => '10 Months',
+        'أحد عشر شهر' => '11 Months',
+        'اثنا عشر شهر' => '12 Months',
+        '3 أشهر' => '3 Months',
+        '4 أشهر' => '4 Months',
+        '5 أشهر' => '5 Months',
+        '6 أشهر' => '6 Months',
+        '7 أشهر' => '7 Months',
+        '8 أشهر' => '8 Months',
+        '9 أشهر' => '9 Months',
+        '10 أشهر' => '10 Months',
+        '11 شهر' => '11 Months',
+        '12 شهر' => '12 Months',
     ],
 
     'details_title' => 'Order Details',
@@ -156,7 +166,7 @@ return [
     'close' => 'Close',
     'save_changes' => 'Save Changes',
     'processing_stages_title' => 'Processing Stages for Order #:id',
-    'current_status_label' => 'Current Status',
+    'current_status_label' => 'You Are Here',
 
     'username' => 'User Name',
     'email' => 'email',

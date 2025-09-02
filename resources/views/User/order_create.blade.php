@@ -1,101 +1,12 @@
 @extends('layouts.Frontend.mainlayoutfrontend')
 @section('title', 'انشاء طلب')
 @section('css')
+    <!-- Bootstrap Stepper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper@1.7.0/dist/css/bs-stepper.min.css">
+    
     <style>
-        label {
+                label {
             font-size: 20px;
-        }
-        /* Modern Stepper Styles */
-        .steps-container {
-            display: flex;
-            width: 100%;
-            margin-bottom: 2rem;
-            direction: ltr !important;
-        }
-        
-        .step-item {
-            flex-basis: 0;
-            flex-grow: 1;
-            transition: all 0.25s ease-in-out;
-            text-align: center;
-            text-decoration: none !important;
-            position: relative;
-        }
-        
-        .step-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 0.5rem;
-            left: 50%;
-            width: 100%;
-            height: 0.25rem;
-            background-color: #e9ecef;
-            z-index: 1;
-        }
-        
-        .step-item.completed:not(:last-child)::after {
-            background-color: #0A4740;
-        }
-        
-        .step-item.active:not(:last-child)::after {
-            background: linear-gradient(90deg, #0A4740 0%, #e9ecef 100%);
-        }
-        
-        .step-count {
-            position: relative;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            background-color: #e9ecef;
-            color: #6c757d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: all 0.25s ease-in-out;
-            z-index: 2;
-        }
-        
-        .step-item.active .step-count {
-            background-color: #0A4740;
-            color: #fff;
-            transform: scale(1.1);
-            box-shadow: 0 0 0 0.25rem rgba(10, 71, 64, 0.2);
-        }
-        
-        .step-item.completed .step-count {
-            background-color: #0A4740;
-            color: #fff;
-        }
-        
-
-        
-        .step-label {
-            font-size: 0.875rem;
-            color: #6c757d;
-            font-weight: 500;
-            transition: color 0.25s ease-in-out;
-        }
-        
-        .step-item.active .step-label {
-            color: #0A4740;
-            font-weight: 600;
-        }
-        
-        .step-item.completed .step-label {
-            color: #0A4740;
-        }
-        
-        /* Error state for stepper */
-        .step-item.error .step-count {
-            background-color: #dc3545;
-            color: #fff;
-            animation: pulse 2s infinite;
-        }
-        
-        .step-item.error .step-label {
-            color: #dc3545;
         }
         
         /* RTL Slider Fix for Arabic */
@@ -119,14 +30,18 @@
         
         /* Responsive design for stepper */
         @media (max-width: 768px) {
-            .step-label {
-                font-size: 0.75rem;
+            .bs-stepper .bs-stepper-label {
+                font-size: 12px;
             }
             
-            .step-count {
-                width: 2rem;
-                height: 2rem;
-                font-size: 0.75rem;
+            .bs-stepper .bs-stepper-circle {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .bs-stepper .bs-stepper-line {
+                top: -12px;
             }
         }
         /* إخفاء جميع الخطوات افتراضياً */
@@ -221,10 +136,14 @@
         
         /* Error highlighting styles */
         .form-step.has-errors {
-            border: 2px solid #dc3545;
-            border-radius: 8px;
-            padding: 15px;
-            background-color: #fff5f5;
+            /* Remove individual form step error styling */
+        }
+        
+        /* Main page container error highlighting */
+        .main-container.has-errors {
+            border: 3px solid #dc3545;
+            border-radius: 28px;
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
         }
         
         .error-message {
@@ -236,7 +155,7 @@
         
         .form-control.is-invalid {
             border-color: #dc3545;
-            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
         }
         
         .radio-container.has-error {
@@ -283,8 +202,8 @@
         .user-info-step {
             background: #f8f9fa;
             border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 32px;
+            margin-bottom: 32px;
             border: 1px solid #e9ecef;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
@@ -292,7 +211,7 @@
         .user-info-step h5 {
             color: #0A4740;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
             text-align: center;
         }
         
@@ -306,26 +225,26 @@
         
         .user-info-step .form-control:focus {
             border-color: #0A4740;
-            box-shadow: 0 0 0 0.2rem rgba(10, 71, 64, 0.25);
+            box-shadow: 0 0 0 3px rgba(10, 71, 64, 0.25);
             outline: none;
         }
         
         .user-info-step .form-control.is-invalid {
             border-color: #dc3545;
-            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
         }
         
         .user-info-step label {
             color: #495057;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
             display: block;
         }
         
         .user-info-step .error-message {
             color: #dc3545;
             font-size: 14px;
-            margin-top: 0.25rem;
+            margin-top: 4px;
             font-weight: 500;
         }
         
@@ -482,9 +401,185 @@
             margin-left: auto;
             margin-right: 0;
         }
+        
+        /* Bootstrap Stepper Header */
+        .bs-stepper .bs-stepper-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            gap: 0;
+            padding: 0 16px;
+            margin-bottom: 30px;
+        }
+        
+        /* Bootstrap Stepper RTL Support */
+        .bs-stepper.rtl .bs-stepper-header {
+            flex-direction: row-reverse;
+        }
+        
+        .bs-stepper.rtl .bs-stepper-line {
+            transform: scaleX(-1);
+        }
+        
+        .bs-stepper.rtl .step {
+            flex-direction: row-reverse;
+        }
+        
+        .bs-stepper.rtl .step-trigger {
+            flex-direction: row-reverse;
+        }
+        
+        /* Additional Bootstrap Stepper Customization */
+        .bs-stepper .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            position: relative;
+            flex-shrink: 0;
+            min-width: 120px;
+            max-width: 150px;
+        }
+        
+        .bs-stepper .step-trigger {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .bs-stepper .bs-stepper-circle {
+            background-color: #e9ecef;
+            color: #6c757d;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bs-stepper .step.active .bs-stepper-circle {
+            background-color: #0A4740;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Pulse animation for active step */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 71, 64, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(10, 71, 64, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 71, 64, 0);
+            }
+        }
+        
+        .bs-stepper .step.completed .bs-stepper-circle {
+            background-color: #0A4740;
+            color: white;
+        }
+        
+        .bs-stepper .bs-stepper-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .bs-stepper .step.active .bs-stepper-label {
+            color: #0A4740;
+            font-weight: 600;
+        }
+        
+        .bs-stepper .step.completed .bs-stepper-label {
+            color: #0A4740;
+            font-weight: 500;
+        }
+        
+        .bs-stepper .bs-stepper-line {
+            background-color: #e9ecef;
+            height: 2px;
+            flex: 1;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            align-self: center;
+            position: relative;
+            top: -16px;
+            min-width: 32px;
+            max-width: calc(100% - 64px);
+        }
+        
 
+        
+        .bs-stepper .bs-stepper-line.completed {
+            background-color: #0A4740;
+        }
+        
+        .bs-stepper .step.completed + .bs-stepper-line {
+            background-color: #0A4740;
+        }
+        
+        :dir(ltr) .bs-stepper .step.active + .bs-stepper-line {
+  background: linear-gradient(90deg, #0A4740 0%, #e9ecef 100%);
+}
 
-
+:dir(rtl) .bs-stepper .step.active + .bs-stepper-line {
+  background: linear-gradient(270deg, #0A4740 0%, #e9ecef 100%);
+}
+        
+        /* RTL completed line fix */
+        .bs-stepper.rtl .bs-stepper-line.completed {
+            background-color: #0A4740 !important;
+        }
+        
+        /* Error state styling */
+        .bs-stepper .step.has-error .bs-stepper-circle {
+            background-color: #dc3545 !important;
+            color: white !important;
+            border: 2px solid #dc3545;
+        }
+        
+        .bs-stepper .step.has-error .bs-stepper-label {
+            color: #dc3545 !important;
+            font-weight: 600;
+        }
+        
+        .bs-stepper .step.has-error + .bs-stepper-line {
+            background-color: #dc3545 !important;
+        }
+        
+        /* Ensure lines don't extend beyond steps */
+        .bs-stepper .step:first-child {
+            margin-left: 0;
+        }
+        
+        .bs-stepper .step:last-child {
+            margin-right: 0;
+        }
+        
+        /* Line positioning to connect steps properly */
+        .bs-stepper .bs-stepper-line {
+            margin-left: -64px;
+            margin-right: -64px;
+        }
     </style>
 @endsection
 @section('content')
@@ -542,23 +637,65 @@
 
     <div style="background-color: #f3f3f3" class="pt-5 pb-5">
         <div class="container">
-            <div class="row justify-content-center pt-5 pb-5" style="border-radius: 28px;background-color: white;margin: auto">
+            <div class="row justify-content-center pt-5 pb-5 main-container {{ $errors->any() ? 'has-errors' : '' }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="border-radius: 28px;background-color: white;margin: auto">
                 <div class="col-md-8 col-sm-12 col-lg-8">
 
-                    <!-- Modern Stepper -->
-                    <div class="steps-container" id="stepsContainer">
-                        @foreach($steps as $index => $stepLabel)
-                            <div class="step-item" id="step-item-{{ $index }}">
-                                <div class="step-count" id="step-count-{{ $index }}">
-                                {{ $index + 1 }}
-                                </div>
-                                <div class="step-label">
-                                    {{ $stepLabel }}
+                    <!-- Bootstrap Stepper -->
+                    <div id="bs-stepper" class="bs-stepper">
+                        <div class="bs-stepper-header">
+                            <div class="step" data-target="#step-1">
+                                <div class="step-trigger">
+                                    <span class="bs-stepper-circle">1</span>
+                                    <span class="bs-stepper-label">
+                                        @if(!$hasName)
+                                            {{ app()->getLocale() == 'ar' ? 'المعلومات الأساسية' : 'Basic Information' }}
+                                        @else
+                                            {{ __('order.step_kitchen_area_shape') }}
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                    <!-- End Modern Stepper -->
+                            <div class="bs-stepper-line"></div>
+                            <div class="step" data-target="#step-2">
+                                <div class="step-trigger">
+                                    <span class="bs-stepper-circle">2</span>
+                                    <span class="bs-stepper-label">
+                                        @if(!$hasName)
+                                            {{ __('order.step_kitchen_area_shape') }}
+                                        @else
+                                            {{ __('order.step_kitchen_type_cost') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="bs-stepper-line"></div>
+                            <div class="step" data-target="#step-3">
+                                <div class="step-trigger">
+                                    <span class="bs-stepper-circle">3</span>
+                                    <span class="bs-stepper-label">
+                                        @if(!$hasName)
+                                            {{ __('order.step_kitchen_type_cost') }}
+                                        @else
+                                            {{ __('order.step_time_style') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="bs-stepper-line"></div>
+                            <div class="step" data-target="#step-4">
+                                <div class="step-trigger">
+                                    <span class="bs-stepper-circle">4</span>
+                                    <span class="bs-stepper-label">
+                                        @if(!$hasName)
+                                            {{ __('order.step_time_style') }}
+                                        @else
+                                            {{ __('order.step_meeting_location') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- End Bootstrap Stepper -->
 
                     <!-- رسائل النجاح والأخطاء -->
                     @if (session('success'))
@@ -858,7 +995,7 @@
                             <input type="hidden" name="geocode_string" id="geocode_string" value="{{ old('geocode_string') }}">
 
                             <div class="mb-3">
-                                <label for="search_map">@lang('order.search_location'):</label>
+                                <label for="search_map">@lang('order.search_location')</label>
                                 <input id="search_map" type="text" placeholder="@lang('order.search_here_placeholder')" class="form-control">
                             </div>
 
@@ -878,11 +1015,15 @@
         </div>
     </div>
 
+    <!-- Bootstrap Stepper JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bs-stepper@1.7.0/dist/js/bs-stepper.min.js"></script>
+
     <script>
         var currentStepIndex = {{ $errorStep }};
         var totalSteps = {{ $totalSteps }};
         var allFormSteps = document.getElementsByClassName('form-step');
         var hasErrors = {{ $errors->any() ? 'true' : 'false' }};
+        var stepper; // Bootstrap Stepper instance
 
         // إخفاء جميع الخطوات أولاً
         for (var i = 0; i < allFormSteps.length; i++) {
@@ -891,6 +1032,40 @@
         
         // عرض الخطوة التي تحتوي على أخطاء أو أول خطوة
         showStep(currentStepIndex);
+
+        // Initialize Bootstrap Stepper
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded - Initializing Bootstrap Stepper');
+            const currentLang = '{{ app()->getLocale() }}';
+            const isRTL = currentLang === 'ar';
+            
+            console.log('Current language:', currentLang);
+            console.log('Is RTL:', isRTL);
+            console.log('Current step index:', currentStepIndex);
+            
+            // Initialize stepper
+            stepper = new Stepper(document.getElementById('bs-stepper'), {
+                linear: false,
+                animation: true
+            });
+            
+            console.log('Stepper initialized:', stepper);
+            
+            // Set RTL direction if Arabic
+            if (isRTL) {
+                document.getElementById('bs-stepper').style.direction = 'rtl';
+                document.getElementById('bs-stepper').classList.add('rtl');
+                console.log('RTL styling applied');
+            }
+            
+            // Set current step and update visual state
+            updateStepperVisual(currentStepIndex);
+            
+            // If there are errors, highlight the error step
+            if (hasErrors) {
+                highlightErrorStep(currentStepIndex);
+            }
+        });
 
         function showStep(n) {
             for (var i = 0; i < allFormSteps.length; i++) {
@@ -917,32 +1092,99 @@
             showStep(currentStepIndex);
         }
 
+        // Update stepper when step changes
         function updateStepper(stepIndex) {
-            for (var i = 0; i < totalSteps; i++) {
-                var stepItem = document.getElementById('step-item-' + i);
-                var stepCount = document.getElementById('step-count-' + i);
+            console.log('updateStepper called with stepIndex:', stepIndex);
+            if (stepper) {
+                stepper.to(stepIndex + 1);
+                console.log('Stepper moved to step:', stepIndex + 1);
+            } else {
+                console.log('Stepper not initialized yet');
+            }
+            // Also update the visual state
+            updateStepperVisual(stepIndex);
+        }
+        
+        // Update stepper visual state (circles and lines)
+        function updateStepperVisual(stepIndex) {
+            const steps = document.querySelectorAll('.bs-stepper .step');
+            const lines = document.querySelectorAll('.bs-stepper .bs-stepper-line');
+            
+            console.log('Updating stepper visual state for step:', stepIndex);
+            console.log('Found steps:', steps.length);
+            console.log('Found lines:', lines.length);
+            
+            steps.forEach((step, index) => {
+                const circle = step.querySelector('.bs-stepper-circle');
+                const label = step.querySelector('.bs-stepper-label');
                 
-                // Remove all classes first
-                stepItem.classList.remove('active', 'completed', 'error');
+                // Remove all classes first (but preserve error state)
+                step.classList.remove('active', 'completed');
+                circle.classList.remove('active', 'completed');
+                label.classList.remove('active', 'completed');
                 
-                if (i === stepIndex) {
+                if (index === stepIndex) {
                     // Current step
-                    stepItem.classList.add('active');
-                    
-                    // Add error state if this step has errors
-                    if (hasErrors && i === {{ $errorStep }}) {
-                        stepItem.classList.add('error');
-                    }
-                } else if (i < stepIndex) {
+                    step.classList.add('active');
+                    circle.classList.add('active');
+                    label.classList.add('active');
+                    console.log('Step', index + 1, 'is ACTIVE');
+                } else if (index < stepIndex) {
                     // Completed steps
-                    stepItem.classList.add('completed');
+                    step.classList.add('completed');
+                    circle.classList.add('completed');
+                    label.classList.add('completed');
+                    console.log('Step', index + 1, 'is COMPLETED');
+                } else {
+                    console.log('Step', index + 1, 'is FUTURE');
                 }
-                // Future steps remain with default styling
+            });
+            
+            // Update connecting lines
+            lines.forEach((line, index) => {
+                if (index < stepIndex) {
+                    // Line is completed (fill with #0A4740)
+                    line.classList.add('completed');
+                    console.log('Line', index + 1, 'is COMPLETED');
+                } else {
+                    // Line is not completed yet
+                    line.classList.remove('completed');
+                    console.log('Line', index + 1, 'is FUTURE');
+                }
+            });
+            
+            // Re-apply error highlighting if there are errors
+            if (hasErrors) {
+                highlightErrorStep(currentStepIndex);
             }
         }
+        
+        // Function to highlight error step
+        function highlightErrorStep(errorStepIndex) {
+            const steps = document.querySelectorAll('.bs-stepper .step');
+            const lines = document.querySelectorAll('.bs-stepper .bs-stepper-line');
+            
+            console.log('Highlighting error step:', errorStepIndex);
+            
+            // Remove any existing error classes
+            steps.forEach(step => {
+                step.classList.remove('has-error');
+            });
+            
+            // Add error class to the step with errors
+            if (steps[errorStepIndex]) {
+                steps[errorStepIndex].classList.add('has-error');
+                console.log('Added error class to step:', errorStepIndex + 1);
+            }
+            
+            // Also highlight the line before the error step if it exists
+            if (errorStepIndex > 0 && lines[errorStepIndex - 1]) {
+                lines[errorStepIndex - 1].classList.add('has-error');
+                console.log('Added error class to line before step:', errorStepIndex + 1);
+            }
+        }
+        
 
-        // Initialize stepper on page load
-        updateStepper(currentStepIndex);
     </script>
 
     <!-- تضمين خرائط جوجل -->
@@ -1207,8 +1449,8 @@
     <script>
         // تعريف القيم بلغتين
         const timeRanges = {
-            ar: ["شهر", "شهرين", "ثلاثة أشهر", "أربعة أشهر", "خمسة أشهر", "ستة أشهر"],
-            en: ["One Month", "Two Months", "Three Months", "Four Months", "Five Months", "Six Months"]
+            ar: ["شهر", "شهرين", "3 أشهر", "4 أشهر", "5 أشهر", "6 أشهر"],
+            en: ["1 Month", "2 Months", "3 Months", "4 Months", "5 Months", "6 Months"]
         };
 
         // القيم العربية للتخزين (نفس القيم العربية)

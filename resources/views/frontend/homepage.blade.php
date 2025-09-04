@@ -628,7 +628,7 @@
     <section class="homepage-section showcase-section">
         <div class="container-fluid p-5">
         <div class="container text-center">
-            <h2 class="fw-bold" style="color: rgba(10, 71, 64, 1) !important;">
+            <h2 class="fw-bold" style="color: rgba(10, 71, 64, 1) !important; font-size: 24px;">
                 @lang('homepage.We guarantee safe, hassle-free delivery — every step of the way.')
             </h2>
             <p class="mt-3" style="font-size: 20px;">
@@ -643,8 +643,8 @@
                     <a href="{{ route('category.products', 26) }}" class="d-flex flex-column w-100">
                         <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
                             <img src="{{ asset('Frontend/assets/images/gallery/NewClassic.webp') }}"
-                                 class="img-fluid rounded shadow w-100 h-100"
-                                 style="object-fit: cover;"
+                                 class="img-fluid rounded shadow"
+                                 style="object-fit: cover; width: 295px; height: 255px;"
                                  alt="مطابخ نيو كلاسيك">
                         </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
@@ -657,8 +657,8 @@
                     <a href="{{ route('category.products', 27) }}" class="d-flex flex-column w-100">
                         <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
                             <img src="{{ asset('Frontend/assets/images/gallery/Modern.webp') }}"
-                                 class="img-fluid rounded shadow w-100 h-100"
-                                 style="object-fit: cover;"
+                                 class="img-fluid rounded shadow"
+                                 style="object-fit: cover; width: 295px; height: 255px;"
                                  alt="مطابخ حديثة">
                         </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
@@ -671,8 +671,8 @@
                     <a href="{{ route('category.products', 29) }}" class="d-flex flex-column w-100">
                         <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
                             <img src="{{ asset('Frontend/assets/images/gallery/L-Shaped.webp') }}"
-                                 class="img-fluid rounded shadow w-100 h-100"
-                                 style="object-fit: cover;"
+                                 class="img-fluid rounded shadow"
+                                 style="object-fit: cover;width: 295px; height: 255px;"
                                  alt="مطابخ على شكل حرف L">
                         </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">
@@ -685,8 +685,8 @@
                     <a href="{{ route('category.products', 30) }}" class="d-flex flex-column w-100">
                         <div class="showcase-image-container tryout flex-grow-1 d-flex align-items-center">
                             <img src="{{ asset('Frontend/assets/images/gallery/U-Shaped.webp') }}"
-                                 class="img-fluid rounded shadow w-100 h-100"
-                                 style="object-fit: cover;"
+                                 class="img-fluid rounded shadow"
+                                 style="object-fit: cover;width: 295px; height: 255px;"
                                  alt="مطابخ على شكل حرف U">
                         </div>
                         <h5 class="mt-3 fw-bold" style="color: rgba(36, 77, 77, 1) !important;">

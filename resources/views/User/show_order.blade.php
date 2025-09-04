@@ -24,7 +24,7 @@
             overflow: hidden;
         }
         
-        .order-header::before {
+        /* .order-header::before {
             content: '';
             position: absolute;
             top: 0;
@@ -34,7 +34,7 @@
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             transform: translate(30px, -30px);
-        }
+        } */
         
         .order-header h1 {
             font-weight: 700;
@@ -302,9 +302,9 @@
             content: '';
             position: absolute;
             left: 8.5px; /* align with thumb center */
-            top: 40px; /* from center of thumb */
+            top: 30px; /* from center of thumb */
             width: 3px;
-            height: 40px; /* fixed height to connect to next thumb */
+            height: 60px; /* fixed height to connect to next thumb */
             background: #D3D3D3; /* incomplete */
             z-index: 0;
         }
@@ -323,7 +323,7 @@
         .timeline-marker {
             position: absolute;
             left: 0; /* align thumb with text start */
-            top: 50%;
+            top: 25%;
             width: 20px;
             height: 20px;
             border-radius: 50%;

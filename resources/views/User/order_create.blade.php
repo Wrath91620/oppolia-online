@@ -31,7 +31,15 @@
         /* Responsive design for stepper */
         @media (max-width: 768px) {
             .bs-stepper .bs-stepper-label {
-                font-size: 12px;
+                font-size: 11px;
+                max-width: 80px;
+                line-height: 1.1;
+                padding: 0 3px;
+                height: 50px;
+            }
+            
+            .bs-stepper .step-trigger {
+                height: 80px;
             }
             
             .bs-stepper .bs-stepper-circle {
@@ -104,6 +112,23 @@
             .kitchen-shapes-container .radio-image img {
                 max-width: 120px;
                 max-height: 120px;
+            }
+            
+            .bs-stepper .bs-stepper-label {
+                font-size: 10px;
+                max-width: 70px;
+                line-height: 1.0;
+                padding: 0 2px;
+                height: 45px;
+            }
+            
+            .bs-stepper .step-trigger {
+                height: 70px;
+            }
+            
+            .bs-stepper .step {
+                margin: 0 5px;
+                min-width: 80px;
             }
         }
         .Dark_Green:hover {
@@ -331,6 +356,11 @@
                 flex: 0 0 calc(50% - 7.5px);
                 max-width: calc(50% - 7.5px);
             }
+
+            .kitchen-styles-container img {
+           width: 120px;
+           height: 120px;
+        }
         }
     </style>
     <style>
@@ -454,6 +484,10 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            cursor: default !important;
+        }
+        .bs-stepper .step-trigger:hover { 
+            background: transparent; 
         }
         
         .bs-stepper .bs-stepper-circle {
@@ -502,6 +536,21 @@
         .bs-stepper .bs-stepper-label {
             font-weight: 500;
             color: #495057;
+            white-space: normal;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            text-align: center;
+            max-width: 120px;
+            line-height: 1.2;
+            padding: 0 5px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            text-align: center;
         }
         
         .bs-stepper .step.active .bs-stepper-label {
@@ -522,7 +571,7 @@
             transition: all 0.3s ease;
             align-self: center;
             position: relative;
-            top: -16px;
+            top: -25px;
             min-width: 32px;
             max-width: calc(100% - 64px);
         }
@@ -579,6 +628,46 @@
         .bs-stepper .bs-stepper-line {
             margin-left: -64px;
             margin-right: -64px;
+        }
+        
+        /* Additional stepper spacing and layout fixes */
+        .bs-stepper .step {
+            margin: 0 10px;
+            min-width: 120px;
+        }
+        
+        .bs-stepper .step-trigger {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            height: 100px;
+            justify-content: center;
+        }
+        
+        .bs-stepper .bs-stepper-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .bs-stepper .step {
+            margin: 0 10px;
+            min-width: 120px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Ensure labels maintain center alignment */
+        .bs-stepper .bs-stepper-label span,
+        .bs-stepper .bs-stepper-label div {
+            text-align: center;
+            width: 100%;
         }
     </style>
 @endsection

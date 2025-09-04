@@ -28,7 +28,7 @@ return [
     'dashboard'=>'Dashboard',
     'Edit Profile'=>'Edit Profile',
     'Logout'=>' Logout',
-    'Order Your Kitchen'=>'Order Your Kitchen',
+    'Order Your Kitchen'=>'Order Your Design',
     'products'=>'products',
     'All Products'=>'All Products',
 

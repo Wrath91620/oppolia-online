@@ -171,7 +171,7 @@
         .main-content-container {
             display: flex;
             flex-direction: column;
-            gap: 2em;
+            gap: 4em;
         }
 
         /* Section styling */
@@ -311,7 +311,7 @@
             </div>
 
             <!-- Main Content Column -->
-            <div class="col-lg-9 p-0">
+            <div class="col-lg-9 p-0" style="display: flex; flex-direction: column; gap: 3rem;">
                 <div class="main-content-container">
                     <!-- About Section -->
                     <div id="AboutOppolia" class="content-section">
@@ -322,11 +322,9 @@
                                 <p class="about-para">
                                     @lang('about.about_oppolia_intro')
                                 </p>
-                                <h3 class="about-subtitle">@lang('about.Our products are diverse and cater to all tastes and needs.')</h3>
                                 <p class="about-para">
                                     @lang('about.products_diverse_description')
                                 </p>
-                                <h3 class="about-subtitle">@lang('about.oppolia_strength')</h3>
                                 <p class="about-para">
                                   @lang('about.customization_description')
                                 </p>
@@ -352,7 +350,7 @@
                                         </p>
                                     </div>
                                     <div class="col-md-4 feature-box">
-                                        <h3 class="feature-title">@lang('about.Setting Global Standards')</h3>
+                                        <h3 class="feature-title" style="white-space: nowrap;">@lang('about.Setting Global Standards')</h3>
                                         <p class="feature-description">
                                           @lang('about.global_standards_description')
                                         </p>
@@ -372,11 +370,11 @@
                     <div id="Vision" class="content-section">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-lg-6 p-0">
+                                <div class="col-lg-5 p-0">
                                     <img src="{{ asset('Frontend/assets/images/gallery/vision.jpg') }}" alt="Modern Kitchen"
                                          class="img-fluid w-100 vision-image">
                                 </div>
-                                <div class="col-lg-6 text-right d-flex flex-column justify-content-center p-4"
+                                <div class="col-lg-7 text-right d-flex flex-column justify-content-center p-4"
                                      style="background: #83B0AB">
                                     <h2 class="vision-title">@lang('about.Our Vision')</h2>
                                     <p class="vision-description">
@@ -391,12 +389,19 @@
                     <div id="production" class="content-section">
                         <!-- Production section description -->
                         <div class="col-12 production-lines p-3 p-lg-4">
-                            <h2 class="section-title">@lang('about.Our Production')</h2>
-                            <h3 class="sub-title">@lang('about.Production Lines')</h3>
+                            <h2 class="section-title mb-3">@lang('about.Our Production')</h2>
+                            <h3 class="sub-title mb-3">@lang('about.Production Lines')</h3>
                             <p class="production-para">
                                 @lang('about.production_description')
                             </p>
+                            <p class="production-para">
+                                @lang('about.production_description_1')
+                            </p>
+                            <p class="production-para">
+                                @lang('about.production_description_2')
+                            </p>
                         </div>
+    </div>
 
                         <!-- Production capacity and image section -->
                         <div class="col-12">
@@ -425,16 +430,16 @@
                     <!-- History Section -->
                     <div id="history" class="content-section">
                         <div class="product-grid col-12">
-                            <h2 class="section-title">@lang('about.Our History')</h2>
-                            <div class="new-arrivals owl-carousel owl-responsive owl-theme" dir="ltr">
+                            <h2 class="section-title mt-4 mb-4">@lang('about.Our History')</h2>
+                            <div class="new-arrivals owl-carousel owl-responsive owl-theme" dir="ltr" style="display: flex; align-items: stretch;">
                                 <!-- Slide 1 -->
-                                <div class="item">
-                                    <div class="card card-height p-3">
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
                                         <div class="event-date badge text-center">1994–1997</div>
-                                        <h5 class="card-title mt-3">@lang('about.The Beginnings of Oppolia')</h5>
-                                                                            <p class="card-description">
-                                        @lang('about.beginnings_description')
-                                    </p>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.The Beginnings of Oppolia')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.beginnings_description')
+                                        </p>
                                     </div>
                                     <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
                                         <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
@@ -443,13 +448,13 @@
                                 </div>
 
                                 <!-- Slide 2 -->
-                                <div class="item">
-                                    <div class="card card-height p-3 text-end">
-                                        <div class="event-date badge">1998–2002</div>
-                                        <h5 class="card-title mt-3">@lang('about.Expanding Horizons Globally')</h5>
-                                                                            <p class="card-description">
-                                        @lang('about.expanding_description')
-                                    </p>
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
+                                        <div class="event-date badge text-center">1998–2002</div>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Expanding Horizons Globally')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.expanding_description')
+                                        </p>
                                     </div>
                                     <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
                                         <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
@@ -458,13 +463,13 @@
                                 </div>
 
                                 <!-- Slide 3 -->
-                                <div class="item">
-                                    <div class="card card-height p-3 text-end">
-                                        <div class="event-date badge">2003–2009</div>
-                                        <h5 class="card-title mt-3">@lang('about.Diversification and Development')</h5>
-                                                                            <p class="card-description" dir="rtl">
-                                        @lang('about.diversification_description')
-                                    </p>
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
+                                        <div class="event-date badge text-center">2003–2009</div>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Diversification and Development')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.diversification_description')
+                                        </p>
                                     </div>
                                     <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
                                         <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
@@ -473,13 +478,13 @@
                                 </div>
 
                                 <!-- Slide 4 -->
-                                <div class="item">
-                                    <div class="card card-height p-3 text-end">
-                                        <div class="event-date badge">2010–2014</div>
-                                        <h5 class="card-title mt-3">@lang('about.Going Global')</h5>
-                                                                            <p class="card-description" dir="rtl">
-                                       @lang('about.going_global_description')
-                                    </p>
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
+                                        <div class="event-date badge text-center">2010–2014</div>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Going Global')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.going_global_description')
+                                        </p>
                                     </div>
                                     <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
                                         <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
@@ -488,13 +493,13 @@
                                 </div>
 
                                 <!-- Slide 5 -->
-                                <div class="item">
-                                    <div class="card card-height p-3 text-end">
-                                        <div class="event-date badge">2015–2019</div>
-                                        <h5 class="card-title mt-3">@lang('about.Embracing Technological Advancements')</h5>
-                                                                            <p class="card-description" dir="rtl">
-                                       @lang('about.tech_advancements_description')
-                                    </p>
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
+                                        <div class="event-date badge text-center">2015–2019</div>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Embracing Technological Advancements')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.tech_advancements_description')
+                                        </p>
                                     </div>
                                     <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
                                         <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
@@ -503,13 +508,13 @@
                                 </div>
 
                                 <!-- Slide 6 -->
-                                <div class="item">
-                                    <div class="card card-height p-3 text-end">
-                                        <div class="event-date badge">2020–2023</div>
-                                        <h5 class="card-title mt-3">@lang('about.Green Sustainability Initiatives')</h5>
-                                                                            <p class="card-description" dir="rtl">
-                                       @lang('about.sustainability_description')
-                                    </p>
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
+                                        <div class="event-date badge text-center">2020–2023</div>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Green Sustainability Initiatives')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.sustainability_description')
+                                        </p>
                                     </div>
                                     <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
                                         <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
@@ -518,18 +523,14 @@
                                 </div>
 
                                 <!-- Slide 7 -->
-                                <div class="item">
-                                    <div class="card card-height p-3 text-end">
-                                        <div class="event-date badge">2024</div>
-                                        <h5 class="card-title mt-3">@lang('about.Celebrating 30 Years')</h5>
-                                                                            <p class="card-description" dir="rtl">
-                                        @lang('about.thirty_years_description')
-                                    </p>
+                                <div class="item" style="display: flex; flex-direction: column;">
+                                    <div class="card p-3" style="flex: 1; display: flex; flex-direction: column; min-height: 250px;">
+                                        <div class="event-date badge text-center">2024</div>
+                                        <h5 class="card-title mt-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Celebrating 30 Years')</h5>
+                                        <p class="card-description" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }}; flex: 1;">
+                                            @lang('about.thirty_years_description')
+                                        </p>
                                     </div>
-                                    <svg class="slide-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 53 51 150">
-                                        <path d="M20.9695 128L51 59.7244L45.0457 53L0 128L45.0457 203L51 196.017L20.9695 128Z"
-                                              fill="#509F96" />
-                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -541,6 +542,10 @@
                             <h2 class="section-title">@lang('about.Our Team')</h2>
                             <p class="section-description">
                                 @lang('about.team_backbone_description')
+                            </p>
+                            <p class="section-description  align-items-center" style="font-weight: 700;">
+                                @lang('about.How Can Our Team Support You?')
+                                <span class="section-description ms-2" style="font-weight: normal;">@lang('about.Personal Consultation')</span>
                             </p>
 
                             <p class="section-description">
@@ -607,21 +612,20 @@
 
                     <!-- Achievements Section -->
                     <div id="achievements" class="content-section">
-                        <h2 class="section-title p-3">@lang('about.Our Achievements')</h2>
-                        <!-- Row 1: illustration (left) + heading & big card (right) -->
+                        <h2 class="section-title p-3" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Our Achievements')</h2>
+                        <!-- Row 1: Market value card + illustration -->
                         <div class="row align-items-center g-4">
-                            <!-- Right: big value card -->
-                            <div class="col-lg-6">
+                            <!-- Market value card - order changes based on locale -->
+                            <div class="col-lg-6 {{ app()->getLocale() === 'ar' ? 'order-lg-2' : 'order-lg-1' }}">
                                 <div class="achievement-card green-border d-flex flex-column h-100 p-4">
-                                    <h6 class="market-title">@lang('about.Market value')</h6>
-                                    <h3 class="count">@lang('about.$15.3 Billion USD')</h3>
-                                                                    <p>
-                                    @lang('about.market_value_description')
-                                </p>
+                                    <h6 class="market-title" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Market value')</h6>
+                                    <h3 class="count" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.$15.3 Billion USD')</h3>
+                                    <p dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.market_value_description')</p>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 d-none d-lg-flex justify-content-center">
+                            <!-- Illustration - order changes based on locale -->
+                            <div class="col-lg-6 d-none d-lg-flex justify-content-center {{ app()->getLocale() === 'ar' ? 'order-lg-1' : 'order-lg-2' }}">
                                 <div class="illu-container">
                                     <!-- 1) your circle+roof SVG as a true <img> or inline SVG -->
                                     <img src="Frontend/assets/images/gallery/logo.webp" alt="" class="logomark">
@@ -634,6 +638,9 @@
 
                                     <!-- 4) trophies stacked -->
                                     <div class="awards">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="192" height="238" viewBox="0 0 192 238" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M158.402 191.299C142.065 212.237 120.361 228.36 95.5961 237.956V206.683C105.23 201.666 114.209 195.482 122.333 188.272C103.072 193.882 82.5343 193.292 63.6281 186.584C44.7218 179.876 28.4052 167.391 16.9888 150.897C5.57252 134.403 -0.364984 114.735 0.0173731 94.6801C0.399731 74.6248 7.08248 55.198 19.1192 39.1509C31.1559 23.1038 47.9367 11.2496 67.0849 5.26714C86.2331 -0.715357 106.779 -0.522907 125.811 5.81714C144.844 12.1572 161.4 24.3235 173.134 40.5933C184.868 56.863 191.186 76.4115 191.192 96.4705V97.9836C191.186 127.917 182.226 157.165 165.464 181.967L158.402 191.299ZM28.5025 96.4705C28.5025 143.128 58.518 180.958 95.5961 180.958C129.647 180.958 157.897 148.676 161.933 106.811C162.359 103.889 162.528 100.935 162.438 97.9836V96.4705C162.438 49.8129 132.674 11.7301 95.5961 11.7301C58.518 11.7301 28.5025 49.8129 28.5025 96.4705Z" fill="#509F96"/>
+</svg> -->
                                         <img src="Frontend/assets/images/gallery/red-dot.webp" alt="Back trophy">
                                         <img src="Frontend/assets/images/gallery/muse.webp" alt="Front trophy">
                                     </div>
@@ -641,27 +648,35 @@
                             </div>
                         </div>
 
-                        <!-- Achievement Cards Flexbox Layout -->
-                        <div class="achievement-cards-container">
-                            <div class="achievement-card green-border d-flex flex-column w-100 p-4">
-                                <h6 class="market-title">@lang('about.MUSE Design Awards')</h6>
-                                <h3 class="count">+1 @lang('about.MUSE Design Awards')</h3>
-                                <p>@lang('about.muse_awards_description')</p>
+                        <!-- Achievement Cards Grid Layout -->
+                        <div class="row g-4 mt-4">
+                            <div class="col-lg-6">
+                                <div class="achievement-card green-border d-flex flex-column h-100 p-4">
+                                    <h6 class="market-title" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.MUSE Design Awards')</h6>
+                                    <h3 class="count" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">+1 @lang('about.MUSE Design Awards')</h3>
+                                    <p dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.muse_awards_description')</p>
+                                </div>
                             </div>
-                            <div class="achievement-card green-border d-flex flex-column w-100 p-4">
-                                <h6 class="market-title">@lang('about.Red Dot Award')</h6>
-                                <h3 class="count">+1 @lang('about.Red Dot Award')</h3>
-                                <p>@lang('about.red_dot_award_description')</p>
+                            <div class="col-lg-6">
+                                <div class="achievement-card green-border d-flex flex-column h-100 p-4">
+                                    <h6 class="market-title" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Red Dot Award')</h6>
+                                    <h3 class="count" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">+1 @lang('about.Red Dot Award')</h3>
+                                    <p dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.red_dot_award_description')</p>
+                                </div>
                             </div>
-                            <div class="achievement-card green-border d-flex flex-column w-100 p-4">
-                                <h6 class="market-title">@lang('about.7,000 Showrooms Worldwide')</h6>
-                                <h3 class="count">+7,000</h3>
-                                <p>@lang('about.showrooms_description')</p>
+                            <div class="col-lg-6">
+                                <div class="achievement-card green-border d-flex flex-column h-100 p-4">
+                                    <h6 class="market-title" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.7,000 Showrooms Worldwide')</h6>
+                                    <h3 class="count" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">+7,000</h3>
+                                    <p dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.showrooms_description')</p>
+                                </div>
                             </div>
-                            <div class="achievement-card green-border d-flex flex-column w-100 p-4">
-                                <h6 class="market-title">@lang('about.Complete Home Furnishing')</h6>
-                                <h3 class="count">+40</h3>
-                                <p>@lang('about.home_furnishing_description')</p>
+                            <div class="col-lg-6">
+                                <div class="achievement-card green-border d-flex flex-column h-100 p-4">
+                                    <h6 class="market-title" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.Complete Home Furnishing')</h6>
+                                    <h3 class="count" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">+40</h3>
+                                    <p dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" style="text-align: {{ app()->getLocale() === 'ar' ? 'right' : 'left' }};">@lang('about.home_furnishing_description')</p>
+                                </div>
                             </div>
                         </div>
                     </div>
